@@ -7,6 +7,9 @@ import Slider from './components/Slider';
 import Inbox from './components/Inbox';
 import AllCategory from './components/AllCategory';
 import Receipes from './components/Receipes';
+import InstaPost from './components/InstaPost';
+import AllReceipes from './components/AllReceipe';
+
 
 function App() {
   return (
@@ -16,6 +19,8 @@ function App() {
     <AllCategory />
     <Receipes />
     <Chef />
+    <InstaPost />
+    <AllReceipes />
     <Inbox />
     <Footer />
     </React.Fragment>

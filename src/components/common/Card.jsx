@@ -5,7 +5,7 @@ import { ImSpoonKnife } from "react-icons/im";
 
 function Card({ img, heading, time, category }) {
   return (
-    <Box p={3} bg="#EBF8FF" borderRadius={20} as="article">
+    <Box p={3} bg="#EBF8FF" borderRadius={20} as="article" mt={15}>
       <Image objectFit="fill" h={300} w="100%" src={img} alt="stock image" />
       <Heading size="md" fontWeight="bold">
         {heading}
