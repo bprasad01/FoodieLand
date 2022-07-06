@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import  React from "react";
 import {
   Box,
   Flex,
@@ -12,7 +12,7 @@ import {
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { FaFacebook, FaInstagram, FaTwitter } from 'react-icons/fa';
 
-const NavLink = ({ children } = { children: ReactNode }) => (
+const NavLink = ({ children } = { children: React }) => (
   <Link
     px={2}
     py={1}

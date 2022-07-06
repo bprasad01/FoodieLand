@@ -19,7 +19,7 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
 // If you want to use your own Selectors look up the Advancaed Story book examples
-const Banner = ({ slides }) => {
+const Banner = () => {
 
   const [data, setData] = useState([]);
 
