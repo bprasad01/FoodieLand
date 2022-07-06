@@ -9,13 +9,16 @@ import AllCategory from './components/AllCategory';
 import Receipes from './components/Receipes';
 import InstaPost from './components/InstaPost';
 import AllReceipes from './components/AllReceipe';
+import Carousel from './components/Carousel';
+import Banner from './components/Banner';
+import Carousels from './components/Carousel';
 
 
 function App() {
   return (
     <React.Fragment>
     <Nav />
-    <Slider />
+    <Carousels />
     <AllCategory />
     <Receipes />
     <Chef />

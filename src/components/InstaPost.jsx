@@ -1,48 +1,48 @@
-import { Box, Heading, Img, Wrap, WrapItem, Avatar, Text, VStack, HStack, Button, Flex } from '@chakra-ui/react';
-import React, { Component } from 'react';
-import Insta from '../Images/chicken.jpg'
-import {BsHeart} from 'react-icons/bs' 
-import {FaRegComment} from 'react-icons/fa'
-import {RiShareBoxLine} from 'react-icons/ri' 
-class InstaPost extends Component {
-    state = { 
-        posts : []
-     }
+import { Box } from '@chakra-ui/react';
+import React from 'react';
+import { InstagramMedia } from 'react-instagram-media'
 
-    render() { 
+function InstaPost(props) {
+  return (
+    <Box>
+    <InstagramMedia
+    uri="https://www.instagram.com/p/B866lKJgReK/"
+   
+    renderItem={
+      ({ display_url, video_url, type, caption }) => {
+        if (type === 'video') {
+          return (
+            <video poster={display_url} controls>
+              <source src={video_url} type="video/mp4" />
+            </video>
+          )
+        }
+   
         return (
-            <Box maxW={1080} mx={"auto"} mt={20} >
-            <Heading textAlign={"center"}>CheckOut @foodieland on Instagram</Heading>
-            <Text textAlign={"center"}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            <br />ut labore et dolore magna aliqua</Text>
-               
-            <Box>
-            <Box w={200}>
-                <Wrap>
-                <WrapItem>
-                  <Avatar name='Dan Abrahmov' src='https://bit.ly/dan-abramov' />
-                </WrapItem>
-                <VStack>
-                <Heading fontSize={"sm"}>Username</Heading>
-                <Text fontSize={"sm"}>Location</Text>
-                </VStack>
-                </Wrap>
-                </Box>
-                <Box>
-                    <Img w={350} h={350} src={Insta}/>
-                    <HStack>
-                        <Button><BsHeart /></Button>
-                        <Button><FaRegComment /></Button>
-                        <Button><RiShareBoxLine /></Button>
-                        </HStack>
-                    <Flex justifyContent={"right"}>
-                    <Button alignContent={"flex-end"}><RiShareBoxLine /></Button>
-                    </Flex>
-                </Box>
-                </Box>
-            </Box>
-        );
+          <img
+            src={display_url}
+            alt={caption}
+          />
+        )
+      }
     }
+   
+    renderMediaList={children => (
+      <div className="swiper">
+        {children}
+      </div>
+    )}
+   
+    renderError={() => (
+      <div>I have failed to parse it</div>
+    )}
+   
+    renderLoading={() => (
+      <div>Loading</div>
+    )}
+  />
+    </Box>
+  );
 }
- 
+
 export default InstaPost;
