@@ -12,7 +12,6 @@ class Receipes extends Component {
     const URL = "http://95.111.202.157:8001/api/v1/getAllRecipes";
     const res = await axios.get(URL);
     const popularReceipes = res.data;
-    console.log(popularReceipes);
     this.setState({ popularReceipes });
   }
   render() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Box, Heading, Flex, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import Card from "./common/Card";
+import Card from "../common/Card";
 
 class AllReceipes extends Component {
   state = {

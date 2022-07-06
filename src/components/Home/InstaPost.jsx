@@ -11,10 +11,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaInstagram } from "react-icons/fa";
-import InstaImg1 from "../Images/food-9.png";
-import InstaImg2 from "../Images/food-10.png";
-import InstaImg3 from "../Images/food-11.png";
-import InstaImg4 from "../Images/food-12.png";
+import InstaImg1 from "../../Images/food-9.png";
+import InstaImg2 from "../../Images/food-10.png";
+import InstaImg3 from "../../Images/food-11.png";
+import InstaImg4 from "../../Images/food-12.png";
 
 function InstaPost(props) {
   function Feature({ img, title, location, desc, postDesc, ...rest }) {

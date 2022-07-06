@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Box, Heading, Flex, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import Card from "./common/Card";
+import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import Card from "../common/Card";
 
-class AllReceipes extends Component {
+class Receipes extends Component {
   state = {
     popularReceipes: [],
   };
@@ -16,15 +16,15 @@ class AllReceipes extends Component {
   }
   render() {
     return (
-      <Box maxW={1080} mx={"auto"} mt={20} >
-        <Flex>
-          <Heading w={540}>Try this delicious receipe<br/> to make your day</Heading>
-          <Text w={540}>
+      <Box maxW={1080} mx={"auto"} mt={15}>
+        <Stack>
+          <Heading textAlign={"center"}>Simple & Tasty Receipe</Heading>
+          <Text textAlign={"center"}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            eiusmod tempor incididunt <br/>ut labore et dolore magna aliqua.
           </Text>
-        </Flex>
-        <SimpleGrid columns={4} spacing={5}>
+        </Stack>
+        <SimpleGrid columns={3} spacing={5}>
           {this.state.popularReceipes.map((item, index) => (
             <Card key={index} img={"http://95.111.202.157:8001/" + item.recipeId.image}
             heading={item.recipeId.title} 
@@ -38,4 +38,4 @@ class AllReceipes extends Component {
   }
 }
 
-export default AllReceipes;
+export default Receipes;

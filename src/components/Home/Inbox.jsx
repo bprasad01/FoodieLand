@@ -1,7 +1,7 @@
 import { Flex, Image, Box, Text, Stack, Input, Button } from "@chakra-ui/react";
 import React from "react";
-import Subs1 from "../Images/subs1.png";
-import Subs2 from "../Images/subs2.png";
+import Subs1 from "../../Images/subs1.png";
+import Subs2 from "../../Images/subs2.png";
 
 function Inbox(props) {
   return (

@@ -30,7 +30,7 @@ const NavLink = ({ children } = { children: ReactNode }) => (
 export default function Nav() {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
-    <>
+    <Box maxW={1080} mx={"auto"}>
       <Box bg={useColorModeValue("gray.100", "gray.900")} px={4}>
         <Flex h={16}  alignItems={"center"} justifyContent={"space-between"}>
           <Box>FoodieLand</Box>
@@ -53,6 +53,6 @@ export default function Nav() {
           </Flex>
         </Flex>
       </Box>
-    </>
+    </Box>
   );
 }
