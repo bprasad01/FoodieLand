@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { Box, Heading, Flex, SimpleGrid, Stack, Text } from "@chakra-ui/react";
-import Card from "../common/Card";
+import { Box, Heading, Flex, SimpleGrid, HStack, Text, Image, Button } from "@chakra-ui/react";
+import { BsFillAlarmFill } from "react-icons/bs";
+import { ImSpoonKnife } from "react-icons/im";
 
 class AllReceipes extends Component {
   state = {
@@ -14,11 +15,26 @@ class AllReceipes extends Component {
     const popularReceipes = res.data;
     this.setState({ popularReceipes });
   }
+
+  Feature({ img, title, location, desc, postDesc, ...rest }) {
+    return (
+      <Box p={5} shadow="md" borderWidth="1px" {...rest}>
+      <Heading fontSize="xl">{title}</Heading>
+      <Text mt={2}>{location}</Text>
+        <Image src={img} />
+        <Text mt={4}>{desc}</Text>
+        <Text mt={4}>{postDesc}</Text>
+      </Box>
+    );
+  }
   render() {
     return (
-      <Box maxW={1080} mx={"auto"} mt={20} >
+      <Box maxW={1080} mx={"auto"} mt={20}>
         <Flex>
-          <Heading w={540}>Try this delicious receipe<br/> to make your day</Heading>
+          <Heading w={540}>
+            Try this delicious receipe
+            <br /> to make your day
+          </Heading>
           <Text w={540}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua.
@@ -26,11 +42,28 @@ class AllReceipes extends Component {
         </Flex>
         <SimpleGrid columns={4} spacing={5}>
           {this.state.popularReceipes.map((item, index) => (
-            <Card key={index} img={"http://95.111.202.157:8001/" + item.recipeId.image}
-            heading={item.recipeId.title} 
-            time={item.recipeId.cookTime}
-            category={item.recipeId.categoryId.categoryName}/>
-
+            <Box p={3} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
+              <Image
+                objectFit="fill"
+                h={300}
+                w="100%"
+                src={"http://95.111.202.157:8001/" + item.recipeId.image}
+                alt="stock image"
+              />
+              <Heading size="md" fontWeight="bold">
+                {item.recipeId.title}
+              </Heading>
+              <HStack justifyItems={"space-between"}>
+                <Button borderRadius="10px" bgColor="#EDFDFD">
+                  <BsFillAlarmFill />
+                  {item.recipeId.cookTime}
+                </Button>
+                <Button borderRadius="10px" bgColor="#EDFDFD">
+                  <ImSpoonKnife />
+                  {item.recipeId.categoryId.categoryName}
+                </Button>
+              </HStack>
+            </Box>
           ))}
         </SimpleGrid>
       </Box>
@@ -39,3 +72,7 @@ class AllReceipes extends Component {
 }
 
 export default AllReceipes;
+// <Card key={index} img={"http://95.111.202.157:8001/" + item.recipeId.image}
+//             heading={item.recipeId.title}
+//             time={item.recipeId.cookTime}
+//             category={item.recipeId.categoryId.categoryName}/>
