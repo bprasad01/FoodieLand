@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Blogs from './components/BlogPost/Blogs';
 import Nav from './components/common/NavBar';
 
@@ -20,6 +20,7 @@ function App() {
       <Route path="/blogposts" component={Blogs} />
       <Route path="/bloglists" component={BlogLists}/>
       <Route path="/contacts" component={Contacts} />
+      <Redirect from='/' to='/home'/>
     </Switch>
     </React.Fragment>
   );
