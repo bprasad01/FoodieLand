@@ -2,16 +2,17 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Card from "../common/Card";
+import { getAllReceipe } from "../../utils/homeService";
 
 class Receipes extends Component {
   state = {
     popularReceipes: [],
   };
 
+  imgPath = "http://95.111.202.157:8001/";
+
   async componentDidMount() {
-    const URL = "http://95.111.202.157:8001/api/v1/getAllRecipes";
-    const res = await axios.get(URL);
-    const popularReceipes = res.data;
+    const { data : popularReceipes } = await getAllReceipe()
     this.setState({ popularReceipes });
   }
   render() {
@@ -26,7 +27,7 @@ class Receipes extends Component {
         </Stack>
         <SimpleGrid columns={3} spacing={5}>
           {this.state.popularReceipes.map((item, index) => (
-            <Card key={index} img={"http://95.111.202.157:8001/" + item.recipeId.image}
+            <Card key={index} img={this.imgPath + item.recipeId.image}
             heading={item.recipeId.title} 
             time={item.recipeId.cookTime}
             category={item.recipeId.categoryId.categoryName}/>

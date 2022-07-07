@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Box, Heading, Flex, SimpleGrid, HStack, Text, Image, Button } from "@chakra-ui/react";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
+import { getAllReceipe } from "../../utils/homeService";
 
 class AllReceipes extends Component {
   state = {
     popularReceipes: [],
   };
 
+  imgPath = "http://95.111.202.157:8001/";
+  
   async componentDidMount() {
-    const URL = "http://95.111.202.157:8001/api/v1/getAllRecipes";
-    const res = await axios.get(URL);
-    const popularReceipes = res.data;
+    const { data : popularReceipes } = await getAllReceipe();
     this.setState({ popularReceipes });
   }
 
@@ -28,6 +28,8 @@ class AllReceipes extends Component {
     );
   }
   render() {
+
+    const { popularReceipes } = this.state;
     return (
       <Box maxW={1080} mx={"auto"} mt={20}>
         <Flex>
@@ -41,13 +43,13 @@ class AllReceipes extends Component {
           </Text>
         </Flex>
         <SimpleGrid columns={4} spacing={5}>
-          {this.state.popularReceipes.map((item, index) => (
-            <Box p={3} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
+          {popularReceipes.map((item, index) => (
+            <Box key={index} p={3} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
                 h={300}
                 w="100%"
-                src={"http://95.111.202.157:8001/" + item.recipeId.image}
+                src={this.imgPath + item.recipeId.image}
                 alt="stock image"
               />
               <Heading size="md" fontWeight="bold">
@@ -72,7 +74,4 @@ class AllReceipes extends Component {
 }
 
 export default AllReceipes;
-// <Card key={index} img={"http://95.111.202.157:8001/" + item.recipeId.image}
-//             heading={item.recipeId.title}
-//             time={item.recipeId.cookTime}
-//             category={item.recipeId.categoryId.categoryName}/>
+

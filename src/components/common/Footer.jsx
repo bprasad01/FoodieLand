@@ -14,7 +14,7 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 function Footer(props) {
   return (
     <Box maxW={1080} mx={"auto"}>
-      <Box ml={10} mt={10} mr={10}>
+      <Box mt={10}>
         <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
             <Text fontSize='2xl' as='i' color='#001219' fontWeight="800">Foodieland</Text>

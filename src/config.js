@@ -1,0 +1,1 @@
+export const config = "http://95.111.202.157:8001/api";

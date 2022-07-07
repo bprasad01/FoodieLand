@@ -88,7 +88,9 @@ function InstaPost(props) {
             </Text>
           </HStack>
         </Flex>
+        <Flex>
         <Text fontSize={"sm"} fontWeight={500} mt={2}>{postDesc}</Text>
+        </Flex>
         <Text fontWeight={600}>{date}</Text>
       </Box>
     );
@@ -112,7 +114,7 @@ function InstaPost(props) {
               img={InstaImg1}
               location="Tokyo, Japan"
               desc="Liked by craig_love & 122,000"
-              postDesc="Never miss meet. Never be late for one too. A Keep
+              postDesc="Foodieland Never miss meet. Never be late for one too. A Keep
                 track."
               date="September 10"
             />
@@ -123,7 +125,7 @@ function InstaPost(props) {
               img={InstaImg2}
               location="Tokyo, Japan"
               desc="Liked by craig_love & 122,000"
-              postDesc="Never miss meet. Never be late for one too. A Keep
+              postDesc="Foodieland Never miss meet. Never be late for one too. A Keep
                 track."
                 date="September 10"
             />
@@ -134,7 +136,7 @@ function InstaPost(props) {
               img={InstaImg3}
               location="Tokyo, Japan"
               desc="Liked by craig_love & 122,000"
-              postDesc="Never miss meet. Never be late for one too. A Keep
+              postDesc="Foodieland Never miss meet. Never be late for one too. A Keep
                 track."
                 date="September 10"
             />
@@ -145,7 +147,7 @@ function InstaPost(props) {
               img={InstaImg4}
               location="Tokyo, Japan"
               desc="Liked by craig_love & 122,000"
-              postDesc="Never miss meet. Never be late for one too. A Keep
+              postDesc="Foodieland Never miss meet. Never be late for one too. A Keep
                 track."
                 date="September 10"
             />

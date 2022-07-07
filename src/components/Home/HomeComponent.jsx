@@ -1,5 +1,4 @@
 import React from 'react';
-import Nav from '../common/NavBar';
 import AllCategory from './AllCategory';
 import Banner from './Banner';
 import Receipes from './Receipes';
@@ -11,7 +10,6 @@ import Footer from '../common/Footer';
 const HomeComponent = () => {
     return ( 
         <>
-        <Nav />
         <Banner />
         <AllCategory />
         <Receipes />

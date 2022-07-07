@@ -7,7 +7,7 @@ function Inbox(props) {
   return (
     <Box maxW={1080} mx={"auto"}>
     <Flex mt={20} ml={10} mr={10}>
-      <Flex bgGradient="linear(to-b, white.0, blue.100)" borderRadius={30}>
+      <Flex bgColor={"#EBF8FF"} borderRadius={30}>
         <Box>
           <Image src={Subs1} />
         </Box>

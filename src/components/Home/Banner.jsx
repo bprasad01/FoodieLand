@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import axios from "axios";
 import moment from "moment";
 import {
   Image,
@@ -18,27 +17,28 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
+import { getPopularReceipes } from '../../utils/homeService';
 // If you want to use your own Selectors look up the Advancaed Story book examples
-const Banner = ({ slides }) => {
+const Banner = () => {
 
   const [data, setData] = useState([]);
 
-   const getPopularReceipeData = async () => {
-    const URL = "http://95.111.202.157:8001/api/popularRecipes";
-    const res = await axios.get(URL);
-    const receipeData = res.data;
-    setData(receipeData);
+  const imgPath = "http://95.111.202.157:8001/";
+
+  const receipeDetails = async () => {
+    const {data : data} = await getPopularReceipes();
+    setData(data);
   }
 
   useEffect(() => {
-    getPopularReceipeData();
+    receipeDetails();
   }, [])
 
   return (
     <Carousel infiniteLoop>
       {data.map((item) => {
         return (
-          <Box>
+          <Box key={item._id}>
             <Flex
               maxW={1024}
               mx={"auto"}
@@ -78,7 +78,7 @@ const Banner = ({ slides }) => {
                     <Avatar
                       size="sm"
                       name={"Kent Dodds"}
-                      src={"http://95.111.202.157:8001/" + item.recipeId.userId.Image}
+                      src={imgPath + item.recipeId.userId.Image}
                     />
                     <Box pl={3}>
                       <Heading fontSize={"sm"}>{item.recipeId.userId.firstName}</Heading>
@@ -92,7 +92,7 @@ const Banner = ({ slides }) => {
                 </Wrap>
               </Box>
               <Box w={512}>
-                <Image src={"http://95.111.202.157:8001/" + item.recipeId.image} height={460}  w={"100%"} />
+                <Image src={imgPath + item.recipeId.image} height={460}  w={"100%"} />
               </Box>
             </Flex>
           </Box>
