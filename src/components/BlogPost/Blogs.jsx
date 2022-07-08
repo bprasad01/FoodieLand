@@ -1,10 +1,11 @@
 import React from 'react';
+import Banner from './Banner';
 
 function Blogs(props) {
     return (
-        <div>
-            <h1>Blogs</h1>
-        </div>
+        <>
+         <Banner />   
+        </>
     );
 }
 

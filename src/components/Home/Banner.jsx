@@ -23,7 +23,7 @@ const Banner = () => {
 
   const [data, setData] = useState([]);
 
-  const imgPath = "http://95.111.202.157:8001/";
+  const imgPath = "https://foodielandnod.herokuapp.com/";
 
   const receipeDetails = async () => {
     const {data : data} = await getPopularReceipes();
@@ -78,11 +78,11 @@ const Banner = () => {
                     <Avatar
                       size="sm"
                       name={"Kent Dodds"}
-                      src={imgPath + item.recipeId.userId.Image}
+                      src={imgPath + item.recipeId.categoryId.image}
                     />
                     <Box pl={3}>
-                      <Heading fontSize={"sm"}>{item.recipeId.userId.firstName}</Heading>
-                      <Text fontSize={"sm"}>{moment(item.recipeId.userId.createdAt).format("MMM Do YY")}</Text>
+                      <Heading fontSize={"sm"}>{item.recipeId.categoryId.categoryName}</Heading>
+                      <Text fontSize={"sm"}>{moment(item.recipeId.categoryId.createdAt).format("MMM Do YY")}</Text>
                     </Box>
                   </WrapItem>
                   <Button borderRadius="10px" bgColor="#000" colorScheme="#fff">
@@ -92,7 +92,7 @@ const Banner = () => {
                 </Wrap>
               </Box>
               <Box w={512}>
-                <Image src={imgPath + item.recipeId.image} height={460}  w={"100%"} />
+                <Image src={imgPath + item.image} height={460}  w={"100%"} />
               </Box>
             </Flex>
           </Box>

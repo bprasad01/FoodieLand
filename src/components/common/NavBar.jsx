@@ -26,9 +26,9 @@ export default function Nav() {
           <HStack>
           <NavLink to="/home">Home</NavLink>
           <NavLink to="/receipes">Receipe</NavLink>
-          <NavLink to="/blogposts">Blog</NavLink>
-          <NavLink to="/bloglists">Contact</NavLink>
-          <NavLink to="/contacts">About Us</NavLink>
+          <NavLink to="/bloglists">Blog</NavLink>
+          <NavLink to="/contacts">Contact</NavLink>
+          <NavLink to="/aboutus">About Us</NavLink>
           </HStack>
           </Flex>
           <Flex alignItems={"center"}>
