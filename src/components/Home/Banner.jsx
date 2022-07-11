@@ -18,7 +18,8 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
 import { getPopularReceipes } from '../../utils/homeService';
-// If you want to use your own Selectors look up the Advancaed Story book examples
+import defaultImg from '../../Images/chicken.jpg';
+
 const Banner = () => {
 
   const [data, setData] = useState([]);
@@ -92,7 +93,7 @@ const Banner = () => {
                 </Wrap>
               </Box>
               <Box w={512}>
-                <Image src={imgPath + item.image} height={460}  w={"100%"} />
+                <Image src={imgPath + item.image ? defaultImg : imgPath + item.image} height={460}  w={"100%"} />
               </Box>
             </Flex>
           </Box>

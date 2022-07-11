@@ -23,7 +23,7 @@ function App() {
       <Route path="/contacts" component={Contacts} />
       <Route path="/not-found" component={NotFound} />
       <Redirect from='/' exact to='/home'/>
-      <Redirect to='/not-found' />
+      <Redirect exact to='/not-found' />
     </Switch>
     </React.Fragment>
   );

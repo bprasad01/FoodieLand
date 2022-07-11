@@ -3,13 +3,14 @@ import { Box, Heading, Flex, SimpleGrid, HStack, Text, Image, Button } from "@ch
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { getAllReceipe } from "../../utils/homeService";
+import defaultImg from '../../Images/food02.jpg';
 
 class AllReceipes extends Component {
   state = {
     popularReceipes: [],
   };
 
-  imgPath = "http://95.111.202.157:8001/";
+  imgPath = "https://foodielandnod.herokuapp.com/";
   
   async componentDidMount() {
     const { data : popularReceipes } = await getAllReceipe();
@@ -49,7 +50,7 @@ class AllReceipes extends Component {
                 objectFit="fill"
                 h={300}
                 w="100%"
-                src={this.imgPath + item.recipeId.image}
+                src={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
                 alt="stock image"
               />
               <Heading size="md" fontWeight="bold">

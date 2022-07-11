@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Card from "../common/Card";
 import { getAllReceipe } from "../../utils/homeService";
+import defaultImg from '../../Images/food03.jpg';
 
 class Receipes extends Component {
   state = {
     popularReceipes: [],
   };
 
-  imgPath = "http://95.111.202.157:8001/";
+  imgPath = "https://foodielandnod.herokuapp.com/";
 
   async componentDidMount() {
     const { data : popularReceipes } = await getAllReceipe()
@@ -26,12 +26,22 @@ class Receipes extends Component {
           </Text>
         </Stack>
         <SimpleGrid columns={3} spacing={5}>
-          {this.state.popularReceipes.map((item, index) => (
-            <Card key={index} img={this.imgPath + item.recipeId.image}
+          {this.state.popularReceipes.slice(0,5).map((item, index) => (
+            <Card key={index} img={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
             heading={item.recipeId.title} 
             time={item.recipeId.cookTime}
             category={item.recipeId.categoryId.categoryName}/>
-
+            
+            ))}
+            <Img src={defaultImg} alt="Advertisement"></Img>
+        </SimpleGrid>
+        <SimpleGrid columns={3} spacing={5}>
+        {this.state.popularReceipes.slice(5).map((item, index) => (
+          <Card key={index} img={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
+          heading={item.recipeId.title} 
+          time={item.recipeId.cookTime}
+          category={item.recipeId.categoryId.categoryName}/>
+          
           ))}
         </SimpleGrid>
       </Box>
