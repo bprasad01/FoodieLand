@@ -3,7 +3,7 @@ import { Box, Flex, Img, Heading, Text, HStack, Avatar, Stack } from '@chakra-ui
 import food1 from "../../Images/food01.jpg";
 import poster from '../../Images/poster3.png';
 import moment from 'moment';
-const BlogPostList = ({ posts }) => {
+const BlogPostList = ({ posts, popularBlogs }) => {
 
     const defaultAvatarImg = "https://bit.ly/ryan-florence";
     const imgPath = "https://foodielandnod.herokuapp.com/";
@@ -13,7 +13,7 @@ const BlogPostList = ({ posts }) => {
         <Box w={750}>
         {posts.map(item => {
             return(
-            <Flex mb={5}>
+            <Flex mb={5} key={item._id}>
               <Box w={250}>
                 <Img src={imgPath + item.image ? food1 : imgPath + item.image} w={220} h={200} borderRadius={20} />
               </Box>
@@ -45,39 +45,22 @@ const BlogPostList = ({ posts }) => {
           <Heading fontSize={"2xl"}>Tasty Receipes</Heading>
           <Flex>
             <Box>
-            <HStack mt={5}>
-              <Img w={180} h={120} borderRadius={30} src={food1} />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
-            <HStack mt={5}>
-              <Img w={180} h={120} borderRadius={30} src={food1} />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
-            <HStack mt={5}>
-              <Img w={180} h={120} borderRadius={30} src={food1} />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
+            {popularBlogs.slice(0,3).map( data => {
+                return(
+                    <HStack mt={5}>
+                    <Img w={180} h={120} borderRadius={30} src={food1} />
+                    <Stack>
+                      <Heading fontSize={"lg"}>
+                       {data.title}
+                      </Heading>
+                      <Heading fontSize={"sm"} color={"gray.400"}>
+                        {"By" + " " + data.userId.firstName + " " + data.userId.lastName}
+                      </Heading>
+                    </Stack>
+                  </HStack>
+                );
+            })}
+            
             </Box>
           </Flex>
           <Img src={poster} mt={5}/>

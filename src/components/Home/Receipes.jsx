@@ -3,6 +3,7 @@ import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Card from "../common/Card";
 import { getAllReceipe } from "../../utils/homeService";
 import defaultImg from '../../Images/food03.jpg';
+import poster from '../../Images/poster2.jpeg';
 
 class Receipes extends Component {
   state = {
@@ -33,10 +34,10 @@ class Receipes extends Component {
             category={item.recipeId.categoryId.categoryName}/>
             
             ))}
-            <Img src={defaultImg} alt="Advertisement"></Img>
+            <Img src={poster} alt="Advertisement"></Img>
         </SimpleGrid>
         <SimpleGrid columns={3} spacing={5}>
-        {this.state.popularReceipes.slice(5).map((item, index) => (
+        {this.state.popularReceipes.slice(5,8).map((item, index) => (
           <Card key={index} img={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
           heading={item.recipeId.title} 
           time={item.recipeId.cookTime}

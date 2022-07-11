@@ -7,7 +7,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 
-const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumber = [];
 
   const pageSize = Math.ceil(totalPosts / postsPerPage);
@@ -17,17 +17,16 @@ const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
   }
   return (
     <Box>
-      <Grid templateColumns={6} gap={6}>
+      <Grid>
           <HStack mt={5}>
             {pageNumber.map((number) => (
               <GridItem>
                 <Button
                 size={"lg"}
                   onClick={() => paginate(number)}
-                  bgColor={"gray.200"}
+                  bgColor={number == currentPage ? "#000" : "gray.200"}
                   borderRadius={15}
-                  color={"#000"}
-                   _hover={{ bg: "#000", color: " #fff" }}
+                  color={number == currentPage ? "#fff" : "#000"}
                 >
                   {number}
                 </Button>

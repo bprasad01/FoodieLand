@@ -8,32 +8,37 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
-import { getAllBlogs } from '../../utils/blogService';
+import { getAllBlogs, getAllPopularBlogs } from "../../utils/blogService";
 import BlogPostList from "./BlogPostList";
 import Pagination from "../common/Pagination";
 
 function BlogHeader() {
+  const [data, setBlogs] = useState([]);
+  const [ popularBlogs, setPopularBlogs] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
 
-    const [data, setBlogs ] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(5);
+  const blogsDetails = async () => {
+    const { data } = await getAllBlogs();
+    setBlogs(data);
+  };
 
-    const blogsDetails = async () => {
-        const { data } = await getAllBlogs();
-        setBlogs(data);
-    }
+  const popularBlogsDetails = async () => {
+    const { data : popularBlogs } = await getAllPopularBlogs();
+    setPopularBlogs(popularBlogs);
+  }
 
-    useEffect(() => {
-        blogsDetails();
-    }, []);
+  useEffect(() => {
+    blogsDetails();
+    popularBlogsDetails();
+  }, []);
 
-    const indexOfLastPost = currentPage * postsPerPage;
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
-
-    const paginate = (pageNumber) => {
-     setCurrentPage(pageNumber)
-    };
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <Container maxW={1080} mx={"auto"}>
@@ -70,9 +75,14 @@ function BlogHeader() {
           </Box>
         </Center>
       </Box>
-      <BlogPostList posts={currentPosts}/>
+      <BlogPostList posts={currentPosts} popularBlogs={popularBlogs} />
       <Center>
-      <Pagination postsPerPage={postsPerPage} totalPosts={data.length} paginate={paginate}/>
+        <Pagination
+          postsPerPage={postsPerPage}
+          totalPosts={data.length}
+          paginate={paginate}
+          currentPage={currentPage}
+        />
       </Center>
     </Container>
   );

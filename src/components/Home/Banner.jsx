@@ -19,6 +19,7 @@ import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
 import { getPopularReceipes } from '../../utils/homeService';
 import defaultImg from '../../Images/chicken.jpg';
+import capsFirst from '../../utils/capsFirst';
 
 const Banner = () => {
 
@@ -53,7 +54,7 @@ const Banner = () => {
                   <MdKitchen /> Hot Receipe
                 </Button>
                 <Heading fontSize="5xl" mt={25} ml={5} mr={20}>
-                  {item.recipeId.title}
+                  {capsFirst(item.recipeId.title)}
                 </Heading>
                 <Text fontSize={"sm"} ml={10} mt={5} mb={5} textAlign="justify" mr={20}>
                 {item.recipeId.description}
