@@ -16,7 +16,7 @@ class AllCategory extends Component {
     categories: [],
   };
 
-  imagePath = "http://95.111.202.157:8001/";
+  imagePath = "https://foodielandnod.herokuapp.com/";
 
   async componentDidMount() {
     const { data: categories } = await getAllCategory();

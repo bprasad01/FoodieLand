@@ -1,10 +1,17 @@
 import React from 'react';
+import ContactBanner from './contactBanner';
+import Inbox from '../Home/Inbox';
+import TopReceipe from './TopReceipe';
+import Footer from '../common/Footer';
 
 function Contacts(props) {
     return (
-        <div>
-            <h1>Contacts</h1>
-        </div>
+        <>
+            <ContactBanner />
+            <Inbox />
+            <TopReceipe />
+            <Footer />
+        </>
     );
 }
 

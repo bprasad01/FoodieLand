@@ -30,8 +30,9 @@ export default function Nav() {
               <NavLink to="/home">Home</NavLink>
               <NavLink to="/receipes">Receipe</NavLink>
               <NavLink to="/bloglists">Blog</NavLink>
-              <NavLink to="/blogposts">Contact</NavLink>
-              <NavLink to="/aboutus">About Us</NavLink>
+              <NavLink to="/blogposts">BlogPost</NavLink>
+              <NavLink to="/contacts">Contact</NavLink>
+              <NavLink to="/about">About Us</NavLink>
             </HStack>
           </Flex>
           <Flex alignItems={"center"}>

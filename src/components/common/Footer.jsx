@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Box,
@@ -8,17 +8,36 @@ import {
   Stack,
   Divider,
   Button,
+  Img,
 } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
+import { getFooterData } from "../../utils/homeService";
 
 function Footer(props) {
+
+  const [data, setData] = useState([]);
+
+  const imgPath = "https://foodielandnod.herokuapp.com/";
+
+  const handleFooterData = async () => {
+    const { data } = await getFooterData();
+    setData( data );
+  }
+
+  useEffect( () => {
+    handleFooterData();
+  }, []);
   return (
     <Box maxW={1080} mx={"auto"}>
       <Box mt={10}>
-        <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
+      {data.slice(0,1).map( item => {
+        return(
+          <>
+          <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
+          { /*<Img src={imgPath + item.logo}/> */}
             <Text fontSize='2xl' as='i' color='#001219' fontWeight="800">Foodieland</Text>
-            <Text>Lorem ipsum dolor sit amet</Text>
+            <Text>{item.subTitle}</Text>
           </Box>
           <Spacer />
           <Flex alignItems={"center"}>
@@ -46,6 +65,10 @@ function Footer(props) {
             </Flex>
           </Flex>
         </Box>
+          </>
+        )
+      })}
+   
       </Box>
     </Box>
   );

@@ -53,10 +53,10 @@ const Banner = () => {
                 <Button borderRadius="10px" mt={10} ml={-300}>
                   <MdKitchen /> Hot Receipe
                 </Button>
-                <Heading fontSize="5xl" mt={25} ml={5} mr={20}>
+                <Heading fontSize="4xl" mt={25} ml={5} mr={20}>
                   {capsFirst(item.recipeId.title)}
                 </Heading>
-                <Text fontSize={"sm"} ml={10} mt={5} mb={5} textAlign="justify" mr={20}>
+                <Text fontSize={"sm"} ml={10} mt={3} mb={3} textAlign="justify" mr={20}>
                 {item.recipeId.description}
                 </Text>
                 <HStack ml={10} justifyItems={"space-between"}>
@@ -94,7 +94,7 @@ const Banner = () => {
                 </Wrap>
               </Box>
               <Box w={512}>
-                <Image src={imgPath + item.image ? defaultImg : imgPath + item.image} height={460}  w={"100%"} />
+                <Image src={imgPath + item.recipeId.image} height={460}  w={"100%"} />
               </Box>
             </Flex>
           </Box>

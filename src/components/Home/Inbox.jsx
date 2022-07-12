@@ -20,9 +20,9 @@ function Inbox(props) {
             tempor incididunt ut labore et dolore magna aliqut enim ad minim
           </Text>
           <Stack spacing={3}>
-            <Box mt={55} ml={10} mr={10} backgroundColor="white" borderRadius={5}>
+            <Box mt={55} ml={10} mr={10}  borderRadius={5}>
           <Input p={5} my={1} w="300px" placeholder='Your Email Address' borderRadius={15} backgroundColor="white" size='lg' />
-          <Button colorScheme='teal'w={120} size='lg' borderRadius='10px'>Button</Button>
+          <Button bgColor={"#000"} color={"#fff"} w={120} size='lg' borderRadius='10px'>Button</Button>
           </Box>
           </Stack>
         </Box>

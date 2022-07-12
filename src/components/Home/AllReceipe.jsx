@@ -45,15 +45,15 @@ class AllReceipes extends Component {
         </Flex>
         <SimpleGrid columns={4} spacing={5}>
           {popularReceipes.map((item, index) => (
-            <Box key={index} p={3} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
+            <Box key={index} p={2} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
-                h={300}
+                h={250}
                 w="100%"
-                src={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
+                src={this.imgPath + item.recipeId.image ? this.imgPath + item.recipeId.image : defaultImg}
                 alt="stock image"
               />
-              <Heading size="md" fontWeight="bold">
+              <Heading fontSize={"sm"} py={2} my={3} fontWeight="bold">
                 {item.recipeId.title}
               </Heading>
               <HStack justifyItems={"space-between"}>

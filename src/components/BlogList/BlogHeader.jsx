@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { getAllBlogs, getAllPopularBlogs } from "../../utils/blogService";
+import BlogPostList from "./BlogPostList";
+import Pagination from "../common/Pagination";
+import { getSearchQuery } from "../../utils/blogService";
 import {
   Center,
   Container,
@@ -8,14 +12,12 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
-import { getAllBlogs, getAllPopularBlogs } from "../../utils/blogService";
-import BlogPostList from "./BlogPostList";
-import Pagination from "../common/Pagination";
 
 function BlogHeader() {
   const [data, setBlogs] = useState([]);
-  const [ popularBlogs, setPopularBlogs] = useState([]);
+  const [popularBlogs, setPopularBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchQuery] = useState("");
   const [postsPerPage] = useState(5);
 
   const blogsDetails = async () => {
@@ -24,9 +26,14 @@ function BlogHeader() {
   };
 
   const popularBlogsDetails = async () => {
-    const { data : popularBlogs } = await getAllPopularBlogs();
+    const { data: popularBlogs } = await getAllPopularBlogs();
     setPopularBlogs(popularBlogs);
-  }
+  };
+
+  const handleSearch = async (query) => {
+    const { data: searchQuery } = await getSearchQuery(query);
+    setBlogs(searchQuery);
+  };
 
   useEffect(() => {
     blogsDetails();
@@ -57,11 +64,15 @@ function BlogHeader() {
         <Center>
           <Box mt={12}>
             <Input
+              type="text"
+              name="query"
+              // value={searchQuery}
               placeholder="Search article, news or receipe..."
               size="lg"
               htmlSize={30}
               width="auto"
               borderRadius={15}
+              onChange={(event) => handleSearch(event.target.value)}
             />
             <Button
               borderRadius={15}
@@ -75,6 +86,7 @@ function BlogHeader() {
           </Box>
         </Center>
       </Box>
+
       <BlogPostList posts={currentPosts} popularBlogs={popularBlogs} />
       <Center>
         <Pagination

@@ -10,3 +10,7 @@ export const getAllBlogs = () => {
 export const getAllPopularBlogs =() => {
     return axios.get(apiEndPoint + 'popularBlogs');
 }
+
+export const getSearchQuery = (query) => {
+    return axios.get(apiEndPoint + 'searchBlog?key=' + query );
+}

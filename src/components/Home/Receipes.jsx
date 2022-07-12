@@ -3,7 +3,7 @@ import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Card from "../common/Card";
 import { getAllReceipe } from "../../utils/homeService";
 import defaultImg from '../../Images/food03.jpg';
-import poster from '../../Images/poster2.jpeg';
+import poster from '../../Images/poster.png';
 
 class Receipes extends Component {
   state = {
@@ -18,7 +18,7 @@ class Receipes extends Component {
   }
   render() {
     return (
-      <Box maxW={1080} mx={"auto"} mt={15}>
+      <Box maxW={1080} mx={"auto"} mt={20}>
         <Stack>
           <Heading textAlign={"center"}>Simple & Tasty Receipe</Heading>
           <Text textAlign={"center"}>
@@ -26,19 +26,19 @@ class Receipes extends Component {
             eiusmod tempor incididunt <br/>ut labore et dolore magna aliqua.
           </Text>
         </Stack>
-        <SimpleGrid columns={3} spacing={5}>
+        <SimpleGrid columns={3} spacing={5} mt={20}>
           {this.state.popularReceipes.slice(0,5).map((item, index) => (
-            <Card key={index} img={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
+            <Card key={index} img={this.imgPath + item.recipeId.image ? this.imgPath + item.recipeId.image : defaultImg }
             heading={item.recipeId.title} 
             time={item.recipeId.cookTime}
             category={item.recipeId.categoryId.categoryName}/>
             
             ))}
-            <Img src={poster} alt="Advertisement"></Img>
+            <Img maxW={"100%"} src={poster} alt="Advertisement"></Img>
         </SimpleGrid>
         <SimpleGrid columns={3} spacing={5}>
         {this.state.popularReceipes.slice(5,8).map((item, index) => (
-          <Card key={index} img={this.imgPath + item.recipeId.image ? defaultImg : this.imgPath + item.recipeId.image}
+          <Card key={index} img={this.imgPath + item.recipeId.image }
           heading={item.recipeId.title} 
           time={item.recipeId.cookTime}
           category={item.recipeId.categoryId.categoryName}/>

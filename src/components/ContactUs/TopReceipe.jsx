@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 function TopReceipe(props) {
 
     const [data, setData ] = useState([]);
-    const imgPath = "http://95.111.202.157:8001/";
+    const imgPath = "https://foodielandnod.herokuapp.com/";
     const getReceipeData = async () => {
         const { data : data } = await getAllReceipe();
         setData(data);
@@ -21,7 +21,7 @@ function TopReceipe(props) {
     return (
         <Box maxW={1080} mx={"auto"} mb={20}>
         <Box mt={20}>
-        <Heading fontSize={"3xl"} textAlign={"center"}>You May Like These Receipes Too</Heading>
+        <Heading fontSize={"3xl"} textAlign={"center"}>Check Out This Delicious Receipe</Heading>
         </Box>
         <SimpleGrid columns={4} spacing={5} mt={10}>
           {data.slice(0,4).map((item, index) => (
@@ -29,10 +29,10 @@ function TopReceipe(props) {
               <Image
                 objectFit="fill"
                 h={250}
-                borderRadius={10}
                 w="100%"
                 src={imgPath + item.recipeId.image}
                 alt="stock image"
+                borderRadius={10}
               />
               <Heading size="sm" px={2} my={3} fontWeight="bold">
                 {item.recipeId.title}

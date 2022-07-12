@@ -4,7 +4,7 @@ import { Text, Button, Box, Flex, Image } from "@chakra-ui/react";
 function Chef(props) {
   return (
     <Box>
-    <Flex maxW={1080} mx={"auto"} mt={5}>
+    <Flex maxW={1080} mx={"auto"} mt={20} pt={20}>
       <Flex w={600} mt={10} ml={50}>
       <Box mt={30} mr={20}>
       <Text fontSize='4xl' color='#001219' fontWeight="800">EveryOne Can be a Chef in their own Kitchen</Text>
@@ -13,7 +13,7 @@ function Chef(props) {
         industry. Lorem Ipsum has been the industry's standard dummy text ever
         since the 1500s,
         </Text>
-        <Button mt={25} colorScheme='teal' size='lg' borderRadius='10px'>Button</Button>
+        <Button mt={25} bgColor={"#000"} color={"#fff"} size='lg' width='200px' borderRadius='10px'>Button</Button>
       </Box>
       <Box>
       </Box>

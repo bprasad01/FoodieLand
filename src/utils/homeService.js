@@ -16,3 +16,7 @@ export const getAllReceipe = () => {
 export const getPopularReceipes = () => {
     return axios.get(apiEndPoint + 'popularRecipes');
 }
+
+export const getFooterData = () => {
+    return axios.get(apiEndPoint + 'getAllSitOptions')
+}
