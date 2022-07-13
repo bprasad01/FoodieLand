@@ -7,7 +7,7 @@ function AboutBanner(props) {
     <Container maxW={1080} mx={"auto"} mt={20}>
       <Flex>
         <Box w={"48%"}>
-          <Heading fontSize={"4xl"} fontWeight={800}>23 Years Of Experience In Cooking Service</Heading>
+          <Heading fontSize={"4xl"} fontWeight={800}>20 Years Of Experience In Cooking Service</Heading>
           <Text fontSize={"md"} my={4} color={"gray.500"}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             convallis diam massa. Integer eleifend molestie quam, ac gravida
