@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 function TopReceipe(props) {
 
     const [data, setData ] = useState([]);
-    const imgPath = "http://95.111.202.157:8001/";
+    const imgPath = "https://foodielandnod.herokuapp.com/";
     const getReceipeData = async () => {
         const { data : data } = await getAllReceipe();
         setData(data);

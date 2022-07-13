@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Center,
@@ -13,8 +13,24 @@ import {
   Img,
 } from "@chakra-ui/react";
 import banner from '../../Images/Chef1.jpg';
+import axios from "axios";
 
 function Banner(props) {
+
+  // const blogId = props.match.params.blogId;
+  // console.log(blogId);
+
+  // const getBlogDetails = async () => {
+  //   const URL = `https://foodielandnod.herokuapp.com/api/getBlog?id=${blogId}`;
+  //   const res = await axios.get(URL);
+  //   console.log(res);
+
+  // }
+
+  // useEffect( () => {
+  //   getBlogDetails();
+  // }, []);
+
   return (
     <Container maxW={1080} mx={"auto"}>
       <Box mt={20}>

@@ -5,6 +5,7 @@ import Inbox from '../Home/Inbox';
 import Footer from '../common/Footer';
 import ReceipesPost from './ReceipesPost';
 function Blogs(props) {
+
     return (
         <>
          <Banner />  

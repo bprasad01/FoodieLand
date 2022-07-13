@@ -42,10 +42,10 @@ function Footer(props) {
           <Spacer />
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <Link to="/home">Receipe</Link>
-              <Link to="/home">Blog</Link>
-              <Link to="/home">Contact</Link>
-              <Link to="/home">About Us</Link>
+              <Link to="/receipes">Receipe</Link>
+              <Link to="/bloglists">Blog</Link>
+              <Link to="/contacts">Contact</Link>
+              <Link to="/about">About Us</Link>
             </Stack>
           </Flex>
         </Flex>

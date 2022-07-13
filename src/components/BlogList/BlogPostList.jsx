@@ -27,7 +27,8 @@ const BlogPostList = ({ posts, popularBlogs }) => {
               return (
                 <Flex mb={5} key={item._id}>
                   <Box w={250}>
-                    <Img
+                  <a href={`/blogposts/${item._id}`}>
+                    <Img 
                       src={
                         imgPath + item.image
                           ? imgPath + item.image
@@ -36,7 +37,7 @@ const BlogPostList = ({ posts, popularBlogs }) => {
                       w={220}
                       h={200}
                       borderRadius={20}
-                    />
+                    /></a>
                   </Box>
                   <Box w={400}>
                     <Heading fontSize={"md"}>{item.title}</Heading>
