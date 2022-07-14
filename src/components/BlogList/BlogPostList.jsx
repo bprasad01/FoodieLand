@@ -12,6 +12,7 @@ import {
 import food1 from "../../Images/food01.jpg";
 import poster from "../../Images/poster3.png";
 import moment from "moment";
+import { Link } from "react-router-dom";
 const BlogPostList = ({ posts, popularBlogs }) => {
   const defaultImageUrl =
     "https://indiaeducationdiary.in/wp-content/uploads/2021/02/lovett-backdrop-crop-1-1024x576.jpg";
@@ -22,13 +23,12 @@ const BlogPostList = ({ posts, popularBlogs }) => {
     <Box>
       <Flex mt={20}>
         <Box w={750}>
-          {
-            posts.map((item) => {
-              return (
-                <Flex mb={5} key={item._id}>
-                  <Box w={250}>
-                  <a href={`/blogposts/${item._id}`}>
-                    <Img 
+          {posts.map((item) => {
+            return (
+              <Flex mb={5} key={item._id}>
+                <Box w={250}>
+                  <Link to={`/blogposts/${item._id}`}>
+                    <Img
                       src={
                         imgPath + item.image
                           ? imgPath + item.image
@@ -37,39 +37,39 @@ const BlogPostList = ({ posts, popularBlogs }) => {
                       w={220}
                       h={200}
                       borderRadius={20}
-                    /></a>
-                  </Box>
-                  <Box w={400}>
-                    <Heading fontSize={"md"}>{item.title}</Heading>
-                    <Text
-                      fontSize={"sm"}
-                      color={"gray.500"}
-                      textAlign={"justify"}
-                    >
-                      {item.description}
+                    />
+                  </Link>
+                </Box>
+                <Box w={400}>
+                  <Heading fontSize={"md"}>{item.title}</Heading>
+                  <Text
+                    fontSize={"sm"}
+                    color={"gray.500"}
+                    textAlign={"justify"}
+                  >
+                    {item.description}
+                  </Text>
+                  <HStack mt={35}>
+                    <Avatar
+                      name="AV"
+                      src={
+                        imgPath + item.userId.Image
+                          ? defaultAvatarImg
+                          : imgPath + item.userId.Image
+                      }
+                      size="sm"
+                    />
+                    <Heading fontSize={"sm"} fontWeight={800}>
+                      {item.userId.firstName + " " + item.userId.lastName}
+                    </Heading>
+                    <Text fontSize={"sm"} color={"gray.500"}>
+                      {moment(item.userId.createdAt).format("MMM Do YY")}
                     </Text>
-                    <HStack mt={35}>
-                      <Avatar
-                        name="AV"
-                        src={
-                          imgPath + item.userId.Image
-                            ? defaultAvatarImg
-                            : imgPath + item.userId.Image
-                        }
-                        size="sm"
-                      />
-                      <Heading fontSize={"sm"} fontWeight={800}>
-                        {item.userId.firstName + " " + item.userId.lastName}
-                      </Heading>
-                      <Text fontSize={"sm"} color={"gray.500"}>
-                        {moment(item.userId.createdAt).format("MMM Do YY")}
-                      </Text>
-                    </HStack>
-                  </Box>
-                </Flex>
-              );
-            })
-           }
+                  </HStack>
+                </Box>
+              </Flex>
+            );
+          })}
         </Box>
         <Box ml={10} w={330}>
           <Heading fontSize={"2xl"}>Tasty Receipes</Heading>

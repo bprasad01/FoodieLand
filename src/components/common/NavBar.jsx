@@ -30,7 +30,6 @@ export default function Nav() {
               <NavLink to="/home">Home</NavLink>
               <NavLink to="/receipes">Receipe</NavLink>
               <NavLink to="/bloglists">Blog</NavLink>
-              <NavLink to="/blogposts">BlogPost</NavLink>
               <NavLink to="/contacts">Contact</NavLink>
               <NavLink to="/about">About Us</NavLink>
             </HStack>

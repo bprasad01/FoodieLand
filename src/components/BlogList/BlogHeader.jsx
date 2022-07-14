@@ -17,7 +17,7 @@ function BlogHeader() {
   const [data, setBlogs] = useState([]);
   const [popularBlogs, setPopularBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [postsPerPage] = useState(5);
 
   const blogsDetails = async () => {
