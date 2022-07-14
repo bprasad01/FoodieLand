@@ -16,7 +16,7 @@ function InstaGramPost(props) {
       </Stack>
         <Box>
         <InstagramMedia
-  uri="https://www.instagram.com/foodieland555/"
+  uri="https://www.instagram.com/explore/tags/dummy/?hl=en"
  
   renderItem={
     ({ display_url, video_url, type, caption }) => {
