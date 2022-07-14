@@ -7,7 +7,7 @@ import InstaPost from './InstaPost';
 import AllReceipe from './AllReceipe';
 import Inbox from './Inbox'
 import Footer from '../common/Footer';
-import InstaGramPost from './InstaGramPost';
+
 const HomeComponent = () => {
     return ( 
         <>
@@ -16,7 +16,6 @@ const HomeComponent = () => {
         <Receipes />
         <Chef />
         <InstaPost />
-        <InstaGramPost />
         <AllReceipe />
         <Inbox />
         <Footer />
