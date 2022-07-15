@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getAllBlogs, getAllPopularBlogs } from "../../utils/blogService";
-import BlogPostList from "./BlogPostList";
 import Pagination from "../common/Pagination";
-import { getSearchQuery } from "../../utils/blogService";
 import {
   Center,
   Container,
@@ -12,32 +9,35 @@ import {
   Input,
   Button,
 } from "@chakra-ui/react";
+import ReceipePostList from "./ReceipePostList";
+import { getAllReceipes, getPopularReceipes, getSearchReceipe } from "../../utils/receipePost";
 
-function BlogHeader() {
-  const [data, setBlogs] = useState([]);
-  const [popularBlogs, setPopularBlogs] = useState([]);
+function ReceipeHeader() {
+  const [data, setReceipe] = useState([]);
+  const [popularReceipe, setPopularReceipe] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery] = useState("");
-  const [postsPerPage] = useState(5);
+  const [postsPerPage] = useState(4);
 
-  const blogsDetails = async () => {
-    const { data } = await getAllBlogs();
-    setBlogs(data);
+  const receipeDetails = async () => {
+    const { data } = await getAllReceipes();
+    setReceipe(data);
   };
 
-  const popularBlogsDetails = async () => {
-    const { data: popularBlogs } = await getAllPopularBlogs();
-    setPopularBlogs(popularBlogs);
+  const popularReceipeDetails = async () => {
+    const { data: popularReceipe } = await getPopularReceipes();
+    console.log(popularReceipe);
+    setPopularReceipe(popularReceipe);
   };
 
   const handleSearch = async (query) => {
-    const { data: searchQuery } = await getSearchQuery(query);
-    setBlogs(searchQuery);
+    const { data: searchQuery } = await getSearchReceipe(query);
+    setReceipe(searchQuery);
   };
 
   useEffect(() => {
-    blogsDetails();
-    popularBlogsDetails();
+    receipeDetails();
+    popularReceipeDetails();
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
@@ -52,7 +52,7 @@ function BlogHeader() {
       <Box>
         <Center>
           <Box mt={10}>
-            <Heading fontSize={"5xl"}>Blog & Article</Heading>
+            <Heading fontSize={"5xl"}>Receipes & Article</Heading>
           </Box>
         </Center>
         <Center>
@@ -85,8 +85,7 @@ function BlogHeader() {
           </Box>
         </Center>
       </Box>
-
-      <BlogPostList posts={currentPosts} popularBlogs={popularBlogs} />
+      <ReceipePostList posts={currentPosts}  popularReceipe={popularReceipe} />
       <Center>
         <Pagination
           postsPerPage={postsPerPage}
@@ -94,9 +93,9 @@ function BlogHeader() {
           paginate={paginate}
           currentPage={currentPage}
         />
-      </Center>
+      </Center> 
     </Container>
   );
 }
 
-export default BlogHeader;
+export default ReceipeHeader;

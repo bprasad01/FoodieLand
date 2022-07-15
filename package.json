@@ -12,6 +12,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.18.1",
     "framer-motion": "^6.3.16",
+    "joi-browser": "13.4",
     "lodash": "^4.17.21",
     "moment": "^2.29.3",
     "query-string": "^6.1.0",

@@ -5,12 +5,12 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import Nav from './components/common/NavBar';
 
 import HomeComponent from './components/Home/HomeComponent';
-import Receipes from './components/Receipes/Receipes';
 import BlogLists from './components/BlogList/BlogLists';
 import Contacts from './components/ContactUs/Contacts';
 import NotFound from './components/Notfound/NotFound';
 import About from './components/AboutUs/About';
 import BlogPosts from './components/BlogPost/BlogPosts';
+import ReceipeList from './components/ReceipePost/ReceipeList';
 
 
 function App() {
@@ -19,8 +19,7 @@ function App() {
     <Nav />
     <Switch>
       <Route path="/home" component={HomeComponent}/>
-      <Route path="/receipes" component={Receipes}/>
-      {/* <Route path="/blogposts" component={Blogs} /> */}
+      <Route path="/receipes" component={ReceipeList}/>
       <Route path="/bloglists" component={BlogLists}/>
       <Route path="/blogposts/:blogId" component={BlogPosts} />
       <Route path="/contacts" component={Contacts} />
