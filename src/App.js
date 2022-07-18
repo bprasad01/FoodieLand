@@ -11,6 +11,7 @@ import NotFound from './components/Notfound/NotFound';
 import About from './components/AboutUs/About';
 import BlogPosts from './components/BlogPost/BlogPosts';
 import ReceipeList from './components/ReceipePost/ReceipeList';
+import Receipes from './components/Receipes/Receipes';
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
     <Nav />
     <Switch>
       <Route path="/home" component={HomeComponent}/>
-      <Route path="/receipes" component={ReceipeList}/>
+      <Route path="/receipelists" component={ReceipeList}/>
+      <Route path="/receipeposts/:receipeId" component={Receipes}/>
       <Route path="/bloglists" component={BlogLists}/>
       <Route path="/blogposts/:blogId" component={BlogPosts} />
       <Route path="/contacts" component={Contacts} />

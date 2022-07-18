@@ -9,15 +9,18 @@ import { useEffect } from 'react';
 function TopReceipe(props) {
 
     const [data, setData ] = useState([]);
+    
     const imgPath = "https://foodielandnod.herokuapp.com/";
+
+    useEffect( () => {
+        getReceipeData();
+    }, [])
+
     const getReceipeData = async () => {
         const { data : data } = await getAllReceipe();
         setData(data);
     }
 
-    useEffect( () => {
-        getReceipeData();
-    })
     return (
         <Box maxW={1080} mx={"auto"} mb={20}>
         <Box mt={20}>

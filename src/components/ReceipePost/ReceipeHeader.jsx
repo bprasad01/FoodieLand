@@ -19,10 +19,16 @@ function ReceipeHeader() {
   const [searchQuery] = useState("");
   const [postsPerPage] = useState(4);
 
+  useEffect(() => {
+    receipeDetails();
+    popularReceipeDetails();
+  }, []);
+
   const receipeDetails = async () => {
     const { data } = await getAllReceipes();
     setReceipe(data);
   };
+
 
   const popularReceipeDetails = async () => {
     const { data: popularReceipe } = await getPopularReceipes();
@@ -35,10 +41,6 @@ function ReceipeHeader() {
     setReceipe(searchQuery);
   };
 
-  useEffect(() => {
-    receipeDetails();
-    popularReceipeDetails();
-  }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;

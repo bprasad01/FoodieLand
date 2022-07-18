@@ -1,4 +1,4 @@
-import { FormLabel, Textarea } from "@chakra-ui/react";
+import { FormLabel, Textarea, FormHelperText } from "@chakra-ui/react";
 import React from "react";
 
 const TextArea = ({ name, label, value, error, onChange, placeholder }) => {
@@ -15,6 +15,10 @@ const TextArea = ({ name, label, value, error, onChange, placeholder }) => {
         h={200}
         borderRadius={15}
       />
+       {error && (
+        <FormHelperText color={"#E53E3E"}>
+          {error}
+        </FormHelperText>)}
     </>
   );
 };

@@ -28,7 +28,7 @@ export default function Nav() {
           <Flex justifyContent={"space-between"}>
             <HStack spacing={8}>
               <NavLink to="/home">Home</NavLink>
-              <NavLink to="/receipes">Receipe</NavLink>
+              <NavLink to="/receipelists">Receipe</NavLink>
               <NavLink to="/bloglists">Blog</NavLink>
               <NavLink to="/contacts">Contact</NavLink>
               <NavLink to="/about">About Us</NavLink>

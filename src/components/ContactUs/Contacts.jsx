@@ -3,11 +3,13 @@ import ContactBanner from './contactBanner';
 import Inbox from '../Home/Inbox';
 import TopReceipe from './TopReceipe';
 import Footer from '../common/Footer';
+import BannerContact from './bannerContact';
 
 function Contacts(props) {
     return (
         <>
-            <ContactBanner />
+            {/* <ContactBanner /> */}
+            <BannerContact />
             <Inbox />
             <TopReceipe />
             <Footer />

@@ -1,4 +1,4 @@
-import { FormLabel, Select } from "@chakra-ui/react";
+import { FormLabel, Select, FormHelperText } from "@chakra-ui/react";
 import React from "react";
 
 const SelectBox = ({ name, label, value, error, onChange, placeholder }) => {
@@ -14,11 +14,16 @@ const SelectBox = ({ name, label, value, error, onChange, placeholder }) => {
         id="country"
         placeholder={placeholder}
         borderRadius={15}
+        color="gray.500"
         w={250}
       >
-        <option>United Arab Emirates</option>
-        <option>Nigeria</option>
+        <option>Receipes</option>
+        <option>Blogs</option>
       </Select>
+      {error && (
+        <FormHelperText color={"#E53E3E"}>
+          {error}
+        </FormHelperText>)}
     </>
   );
 };

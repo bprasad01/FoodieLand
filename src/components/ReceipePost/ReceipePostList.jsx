@@ -27,7 +27,7 @@ const ReceipePostList = ({ posts, popularReceipe }) => {
             return (
               <Flex mb={5} key={item._id}>
                 <Box w={250}>
-                  {/* <Link to={`/blogposts/${item._id}`}> */}
+                  <Link to={`/receipeposts/${item._id}`}>
                     <Img
                       src={
                         imgPath + item.recipeId.image
@@ -36,7 +36,7 @@ const ReceipePostList = ({ posts, popularReceipe }) => {
                       h={200}
                       borderRadius={20}
                     />
-                  {/* </Link> */}
+                  </Link>
                 </Box>
                 <Box w={400}>
                   <Heading fontSize={"md"}>{item.recipeId.title}</Heading>

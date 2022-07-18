@@ -14,3 +14,7 @@ export const getPopularReceipes = () => {
 export const getSearchReceipe = (query) => {
     return axios.get(apiEndPoint + 'searcRecipe?key=' + query)
 }
+
+export const getOneReceipePost = (receipeId) => {
+    return axios.get(apiEndPoint + 'recipeDetails?id=' + receipeId);
+}

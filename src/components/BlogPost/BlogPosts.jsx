@@ -33,12 +33,6 @@ function BlogPosts(props) {
     setBlog(blog.data);
   }
 
-  // const getBlogDetails = async () => {
-  //   const URL = `https://foodielandnod.herokuapp.com/api/getBlog?id=${blogId}`;
-  //   const { data : blog } = await axios.get(URL);
-  //   setBlog(blog.data);
-  // }
-
   useEffect( () => {
     getBlogDetail();
   }, []);

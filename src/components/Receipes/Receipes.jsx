@@ -7,9 +7,12 @@ import ReceipeIngrediants from './ReceipeIngrediants';
 import TopReceipe from './TopReceipe';
 
 function Receipes(props) {
+
+  const receipeId = props.match.params.receipeId;
+  console.log(receipeId);
     return (
         <>
-          <ReceipeInfo />
+          <ReceipeInfo receipeId={receipeId} />
           <ReceipeIngrediants />    
           <ReceipeDirection />  
           <Inbox />
