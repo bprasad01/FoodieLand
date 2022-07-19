@@ -77,6 +77,7 @@ const BlogPostList = ({ posts, popularBlogs }) => {
             <Box>
               {popularBlogs.slice(0, 3).map((data) => {
                 return (
+                  <Link to={`/blogposts/${data._id}`}>
                   <HStack mt={5}>
                     <Img w={180} h={120} borderRadius={30} src={food1} />
                     <Stack>
@@ -90,6 +91,7 @@ const BlogPostList = ({ posts, popularBlogs }) => {
                       </Heading>
                     </Stack>
                   </HStack>
+                  </Link>
                 );
               })}
             </Box>

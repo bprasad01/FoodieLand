@@ -5,7 +5,7 @@ import {
   GridItem,
   HStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumber = [];
@@ -15,6 +15,10 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   for (let i = 1; i <= pageSize; i++) {
    pageNumber.push(i);
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
   return (
     <Box>
       <Grid>

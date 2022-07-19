@@ -81,6 +81,7 @@ const ReceipePostList = ({ posts, popularReceipe, searchQuery }) => {
             <Box>
               {popularReceipe.slice(1, 4).map((data) => {
                 return (
+                  <Link to={`/receipeposts/${data._id}`}>
                   <HStack mt={5}>
                     <Box w={120}>
                     <Img w={180} h={120} borderRadius={30} src={food1} />
@@ -98,6 +99,7 @@ const ReceipePostList = ({ posts, popularReceipe, searchQuery }) => {
                     </Stack>
                     </Box>
                   </HStack>
+                  </Link>
                 );
               })}
             </Box>
