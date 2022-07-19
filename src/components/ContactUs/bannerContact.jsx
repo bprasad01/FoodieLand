@@ -29,6 +29,10 @@ class BannerContact extends Component {
     errors: {},
   };
 
+  componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
   schema = {
     name: Joi.string().required().label("name"),
     email: Joi.string().required().label("Email"),

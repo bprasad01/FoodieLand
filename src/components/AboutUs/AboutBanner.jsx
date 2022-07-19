@@ -1,8 +1,12 @@
 import React from "react";
 import { Box, Button, Container, Flex, Heading, Img, Spacer, Text } from "@chakra-ui/react";
 import aboutImg from "../../Images/about-cook.jpg";
+import { useEffect } from "react";
 
 function AboutBanner(props) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Container maxW={1080} mx={"auto"} mt={20}>
       <Flex>

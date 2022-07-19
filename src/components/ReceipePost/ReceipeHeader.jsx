@@ -20,6 +20,7 @@ function ReceipeHeader() {
   const [postsPerPage] = useState(4);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     receipeDetails();
     popularReceipeDetails();
   }, []);

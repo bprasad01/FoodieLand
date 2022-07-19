@@ -38,6 +38,7 @@ function BlogHeader() {
   useEffect(() => {
     blogsDetails();
     popularBlogsDetails();
+    window.scrollTo(0, 0);
   }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;

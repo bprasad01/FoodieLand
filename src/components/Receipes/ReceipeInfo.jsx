@@ -33,6 +33,7 @@ function ReceipeInfo(props) {
   const receipeId = props.receipeId;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getReceipeDetail();
   }, []);
 
