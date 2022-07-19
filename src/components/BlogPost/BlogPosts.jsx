@@ -1,4 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import moment from "moment";
+import BlogInfo from "./BlogInfo";
+import ReceipesPost from "./ReceipesPost";
+import { getOneBlogPost } from "../../utils/blogService";
+import Footer from "../common/Footer";
+import Subscription from "../common/Subscription";
 import {
   Box,
   Center,
@@ -12,13 +18,7 @@ import {
   Text,
   Img,
 } from "@chakra-ui/react";
-import moment from "moment";
-import BlogInfo from "./BlogInfo";
-import ReceipesPost from "./ReceipesPost";
-import { useState } from "react";
-import Footer from "../common/Footer";
-import { getOneBlogPost } from "../../utils/blogService";
-import Inbox from "../Home/Inbox";
+import capsFirst from "../../utils/capsFirst";
 
 function BlogPosts(props) {
 
@@ -28,15 +28,15 @@ function BlogPosts(props) {
 
   const blogId = props.match.params.blogId;
 
-  const getBlogDetail = async () => {
-    const { data : blog } = await getOneBlogPost(blogId);
-    setBlog(blog.data);
-  }
-
   useEffect( () => {
     getBlogDetail();
   }, []);
 
+  const getBlogDetail = async () => {
+    const { data : blog } = await getOneBlogPost(blogId);
+    setBlog(blog.data);
+  }
+  
   return (
     <Container maxW={1080} mx={"auto"}>
       <Box mt={20}>
@@ -49,16 +49,16 @@ function BlogPosts(props) {
               <HStack>
                 <Avatar
                   name="Ryan Florence"
-                  src="https://bit.ly/dan-abramov"
+                  src={blog && blog.userId && imgPath + blog.userId.Image}
                 />
                 <Stack>
-                  <Heading fontSize={"sm"}>John Prince</Heading>
+                  <Heading fontSize={"sm"}>{blog && blog.userId && capsFirst(blog.userId.firstName + " " + blog.userId.lastName)}</Heading>
                 </Stack>
               </HStack>
             </GridItem>
             <GridItem>
               <Text fontSize={"sm"} mt={3}>
-                15 Sep 2022
+                {blog && blog.userId && moment(blog.userIdcreatedAt).format("MMM Do YYYY")}
               </Text>
             </GridItem>
           </Grid>
@@ -71,7 +71,7 @@ function BlogPosts(props) {
         </Box>
       </Box>
       <BlogInfo />
-      <Inbox />
+      <Subscription />
       <ReceipesPost />
       <Footer />
     </Container>
@@ -79,5 +79,3 @@ function BlogPosts(props) {
 }
 
 export default BlogPosts;
-// {blog.userId.firstName + " " + blog.userId.lastName}
-// {moment(blog.userId.createdAt).format("MMM Do YY")}

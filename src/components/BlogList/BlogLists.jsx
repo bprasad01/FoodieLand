@@ -1,13 +1,13 @@
 import React from 'react';
 import Footer from '../common/Footer';
-import Inbox from '../Home/Inbox';
+import Subscription from '../common/Subscription';
 import BlogHeader from './BlogHeader';
 
 function BlogLists(props) {
     return (
         <>
             <BlogHeader />
-            <Inbox />
+            <Subscription />
             <Footer />
         </>
     );

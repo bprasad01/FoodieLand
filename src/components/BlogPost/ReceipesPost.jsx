@@ -3,20 +3,22 @@ import React, { useState, useEffect } from 'react';
 import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { getAllReceipe } from "../../utils/homeService";
-import defaultImg from '../../Images/food-9.png';
+import { Link } from 'react-router-dom';
 
 function ReceipesPost(props) {
 
     const [data, setData ] = useState([]);
     const imgPath = "https://foodielandnod.herokuapp.com/";
+    
+    useEffect( () => {
+        getReceipeData();
+    }, []);
+
     const getReceipeData = async () => {
-        const { data : data } = await getAllReceipe();
+        const { data } = await getAllReceipe();
         setData(data);
     }
 
-    useEffect( () => {
-        getReceipeData();
-    })
     return (
         <Box maxW={1080} mx={"auto"} mb={20}>
         <Box mt={20}>
@@ -24,12 +26,13 @@ function ReceipesPost(props) {
         </Box>
         <SimpleGrid columns={3} spacing={5} mt={10}>
           {data.slice(0,3).map((item, index) => (
+            <Link to={`/receipeposts/${item._id}`}>
             <Box key={index} p={3} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
                 h={300}
                 w="100%"
-                src={imgPath + item.recipeId.image ? defaultImg : imgPath + item.recipeId.image}
+                src={imgPath + item.recipeId.image}
                 alt="stock image"
               />
               <Heading size="md" fontWeight="bold" my={2} >
@@ -45,7 +48,7 @@ function ReceipesPost(props) {
                   {item.recipeId.categoryId.categoryName}
                 </Button>
               </HStack>
-            </Box>
+            </Box></Link>
           ))}
         </SimpleGrid>
         </Box>

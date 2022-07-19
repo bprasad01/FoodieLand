@@ -5,8 +5,8 @@ import Receipes from './Receipes';
 import Chef from './Chef';
 import InstaPost from './InstaPost';
 import AllReceipe from './AllReceipe';
-import Inbox from './Inbox'
 import Footer from '../common/Footer';
+import Subscription from '../common/Subscription';
 
 const HomeComponent = () => {
     return ( 
@@ -17,7 +17,7 @@ const HomeComponent = () => {
         <Chef />
         <InstaPost />
         <AllReceipe />
-        <Inbox />
+        <Subscription />
         <Footer />
         </>
      );

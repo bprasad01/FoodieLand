@@ -5,6 +5,7 @@ import { ImSpoonKnife } from "react-icons/im";
 import { getAllReceipe } from "../../utils/homeService";
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function TopReceipe(props) {
 
@@ -17,7 +18,7 @@ function TopReceipe(props) {
     }, [])
 
     const getReceipeData = async () => {
-        const { data : data } = await getAllReceipe();
+        const { data } = await getAllReceipe();
         setData(data);
     }
 
@@ -27,8 +28,9 @@ function TopReceipe(props) {
         <Heading fontSize={"3xl"} textAlign={"center"}>Check Out This Delicious Receipe</Heading>
         </Box>
         <SimpleGrid columns={4} spacing={5} mt={10}>
-          {data.slice(0,4).map((item, index) => (
-            <Box key={index} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
+          {data.slice(0,4).map((item) => (
+            <Link to={`/receipeposts/${item._id}`}>
+            <Box key={item._id} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
                 h={250}
@@ -50,7 +52,7 @@ function TopReceipe(props) {
                   {item.recipeId.categoryId.categoryName}
                 </Button>
               </HStack>
-            </Box>
+            </Box></Link>
           ))}
         </SimpleGrid>
         </Box>

@@ -4,6 +4,7 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { getAllReceipe } from "../../utils/homeService";
 import defaultImg from '../../Images/food02.jpg';
+import { Link } from "react-router-dom";
 
 class AllReceipes extends Component {
   state = {
@@ -45,6 +46,7 @@ class AllReceipes extends Component {
         </Flex>
         <SimpleGrid columns={4} spacing={5}>
           {popularReceipes.map((item, index) => (
+             <Link to={`/receipeposts/${item._id}`}>
             <Box key={index} p={2} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
@@ -66,7 +68,7 @@ class AllReceipes extends Component {
                   {item.recipeId.categoryId.categoryName}
                 </Button>
               </HStack>
-            </Box>
+            </Box></Link>
           ))}
         </SimpleGrid>
       </Box>

@@ -13,7 +13,7 @@ import food1 from "../../Images/food01.jpg";
 import poster from "../../Images/poster3.png";
 import moment from "moment";
 import { Link } from "react-router-dom";
-const ReceipePostList = ({ posts, popularReceipe }) => {
+const ReceipePostList = ({ posts, popularReceipe, searchQuery }) => {
   const defaultImageUrl =
     "https://indiaeducationdiary.in/wp-content/uploads/2021/02/lovett-backdrop-crop-1-1024x576.jpg";
   const defaultAvatarImg = "https://bit.ly/ryan-florence";
@@ -23,7 +23,15 @@ const ReceipePostList = ({ posts, popularReceipe }) => {
     <Box>
       <Flex mt={20}>
         <Box w={750}>
-          {posts.map((item) => {
+          {posts.filter((value) => {
+            if(searchQuery === ""){
+              return value;
+            } else if(
+              value.recipeId.title.toLowerCase().includes(searchQuery.toLowerCase())
+            ){
+              return value;
+            }
+          }).map((item) => {
             return (
               <Flex mb={5} key={item._id}>
                 <Box w={250}>

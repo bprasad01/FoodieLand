@@ -51,10 +51,14 @@ class BannerContact extends Component {
   };
 
   doSubmit = async () => {
-      console.log("Hiii");
     const response = await setContact(this.state.userData);
-    console.log(response);
-
+    this.setState({ userData: {
+        name: "",
+        email: "",
+        subject: "",
+        enquiryType: "",
+        message: "",
+      }})
   }
 
   handleSubmit = (e) => {
@@ -66,7 +70,6 @@ class BannerContact extends Component {
     if (errors) return;
 
     this.doSubmit();
-    // console.log("Submitted");
   };
 
   validateProperty = ({ name, value }) => {

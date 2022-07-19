@@ -6,7 +6,7 @@ import defaultImg from '../../Images/food03.jpg';
 import poster from '../../Images/poster.png';
 import { Link } from "react-router-dom";
 
-class Receipes extends Component {
+class ReceipeAll extends Component {
   state = {
     popularReceipes: [],
   };
@@ -49,4 +49,4 @@ class Receipes extends Component {
   }
 }
 
-export default Receipes;
+export default ReceipeAll;

@@ -3,8 +3,6 @@ import { blogs } from "../config";
 
 const apiEndPoint = blogs + 'addContactDetails';
 
-
-
 export function setContact(user){
     console.log(user);
     

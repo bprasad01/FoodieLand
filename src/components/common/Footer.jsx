@@ -35,7 +35,7 @@ function Footer(props) {
           <>
           <Flex h={20} alignItems={"center"} justifyContent={"space-between"}>
           <Box>
-          { /*<Img src={imgPath + item.logo}/> */}
+          {/* <Img src={imgPath + item.logo}/>  */}
             <Text fontSize='2xl' as='i' color='#001219' fontWeight="800">Foodieland</Text>
             <Text>{item.subTitle}</Text>
           </Box>
@@ -53,14 +53,14 @@ function Footer(props) {
         <Box mt={5} mb={10}>
           <Flex>
             <Flex>
-              <Text fontWeight="600" justifyContent="center">2020 FlowBase Powered by WebFlow</Text>
+              <Text fontWeight="600" justifyContent="center">{item.copyRightText}</Text>
             </Flex>
             <Spacer />
             <Flex alignItems={"end"}>
               <Stack direction={"row"} spacing={7}>
-                <Button>{<FaFacebook />}</Button>
-                <Button>{<FaTwitter />}</Button>
-                <Button>{<FaInstagram />}</Button>
+                <Button><a target="blank" href={item.facebookUrl}>{<FaFacebook />}</a></Button>
+                <Button><a target="blank" href={item.twitterUrl}>{<FaTwitter />}</a></Button>
+                <Button><a target="blank" href={item.facebookUrl}>{<FaInstagram />}</a></Button>
               </Stack>
             </Flex>
           </Flex>

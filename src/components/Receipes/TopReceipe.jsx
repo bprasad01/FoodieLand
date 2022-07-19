@@ -5,19 +5,21 @@ import { ImSpoonKnife } from "react-icons/im";
 import { getAllReceipe } from "../../utils/homeService";
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 function TopReceipe(props) {
 
     const [data, setData ] = useState([]);
     const imgPath = "https://foodielandnod.herokuapp.com/";
+    useEffect( () => {
+        getReceipeData();
+    }, [])
+    
     const getReceipeData = async () => {
-        const { data : data } = await getAllReceipe();
+        const { data } = await getAllReceipe();
         setData(data);
     }
 
-    useEffect( () => {
-        getReceipeData();
-    })
     return (
         <Box maxW={1080} mx={"auto"} mb={20}>
         <Box mt={20}>
@@ -25,6 +27,7 @@ function TopReceipe(props) {
         </Box>
         <SimpleGrid columns={4} spacing={5} mt={10}>
           {data.slice(0,4).map((item, index) => (
+            <Link to={`/receipeposts/${item._id}`}>
             <Box key={index} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
@@ -47,7 +50,7 @@ function TopReceipe(props) {
                   {item.recipeId.categoryId.categoryName}
                 </Button>
               </HStack>
-            </Box>
+            </Box></Link>
           ))}
         </SimpleGrid>
         </Box>

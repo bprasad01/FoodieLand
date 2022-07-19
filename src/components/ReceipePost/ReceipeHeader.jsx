@@ -16,7 +16,7 @@ function ReceipeHeader() {
   const [data, setReceipe] = useState([]);
   const [popularReceipe, setPopularReceipe] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [postsPerPage] = useState(4);
 
   useEffect(() => {
@@ -35,12 +35,6 @@ function ReceipeHeader() {
     console.log(popularReceipe);
     setPopularReceipe(popularReceipe);
   };
-
-  const handleSearch = async (query) => {
-    const { data: searchQuery } = await getSearchReceipe(query);
-    setReceipe(searchQuery);
-  };
-
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
@@ -73,21 +67,13 @@ function ReceipeHeader() {
               htmlSize={30}
               width="auto"
               borderRadius={15}
-              onChange={(event) => handleSearch(event.target.value)}
+              onChange={(event) => setSearchQuery(event.target.value)}
             />
-            <Button
-              borderRadius={15}
-              bgColor={"#000"}
-              color={"#fff"}
-              size={"lg"}
-              ml={2}
-            >
-              Search
-            </Button>
+            
           </Box>
         </Center>
       </Box>
-      <ReceipePostList posts={currentPosts}  popularReceipe={popularReceipe} />
+      <ReceipePostList posts={currentPosts} searchQuery={searchQuery}  popularReceipe={popularReceipe} />
       <Center>
         <Pagination
           postsPerPage={postsPerPage}

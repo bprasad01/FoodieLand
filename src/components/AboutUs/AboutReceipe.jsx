@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Box, Heading, Img, SimpleGrid, Stack, Text } from "@chakra-ui/react";
+import { Box, Heading, SimpleGrid, Stack, Text } from "@chakra-ui/react";
 import Card from "../common/Card";
 import { getAllReceipe } from "../../utils/homeService";
 import defaultImg from '../../Images/food03.jpg';
-import poster from '../../Images/poster.png';
+import { Link } from "react-router-dom";
 
 class AboutReceipe extends Component {
   state = {
@@ -28,11 +28,13 @@ class AboutReceipe extends Component {
         </Stack>
         <SimpleGrid columns={3} spacing={5} mt={20}>
           {this.state.popularReceipes.slice(0,6).map((item, index) => (
+            <Link to={`/receipeposts/${item._id}`}>
             <Card key={index} img={this.imgPath + item.recipeId.image ? this.imgPath + item.recipeId.image : defaultImg }
             heading={item.recipeId.title} 
             time={item.recipeId.cookTime}
             category={item.recipeId.categoryId.categoryName}/>
             
+            </Link>
             ))}
         </SimpleGrid>
       </Box>

@@ -2,7 +2,6 @@ import { FormLabel, Input, FormHelperText } from "@chakra-ui/react";
 import React from "react";
 
 const InputData = ({ name, label, value, error, onChange, placeholder }) => {
-  console.log(error);
   return (
     <>
       <FormLabel htmlFor={name} color={"gray.400"}>
