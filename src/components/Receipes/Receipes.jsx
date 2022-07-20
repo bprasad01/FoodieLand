@@ -16,7 +16,7 @@ function Receipes(props) {
           <ReceipeIngrediants receipeId={receipeId} />    
           <ReceipeDirection receipeId={receipeId} />  
           <Subscription />
-          <TopReceipe />
+          <TopReceipe receipeId={receipeId}/>
           <Footer />        
         </>
     );

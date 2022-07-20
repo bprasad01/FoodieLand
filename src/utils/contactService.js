@@ -4,8 +4,6 @@ import { blogs } from "../config";
 const apiEndPoint = blogs + 'addContactDetails';
 
 export function setContact(user){
-    console.log(user);
-    
     return axios.post(apiEndPoint, {
         name : user.name,
         email : user.email,

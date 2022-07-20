@@ -31,16 +31,19 @@ function ReceipeInfo(props) {
   const imgPath = "https://foodielandnod.herokuapp.com/";
 
   const receipeId = props.receipeId;
+  console.log(receipeId);
 
   useEffect(() => {
     window.scrollTo(0, 0);
     getReceipeDetail();
-  }, []);
+  }, [receipeId]);
 
   const getReceipeDetail = async () => {
     const { data: receipePost } = await getOneReceipePost(receipeId);
     setReceipePost(receipePost.data);
   };
+  
+  console.log(receipePost);
 
   return (
     <Box maxW={1080} mx={"auto"}>

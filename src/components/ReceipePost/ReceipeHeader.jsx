@@ -7,10 +7,9 @@ import {
   Box,
   Text,
   Input,
-  Button,
 } from "@chakra-ui/react";
 import ReceipePostList from "./ReceipePostList";
-import { getAllReceipes, getPopularReceipes, getSearchReceipe } from "../../utils/receipePost";
+import { getAllReceipes, getPopularReceipes } from "../../utils/receipePost";
 
 function ReceipeHeader() {
   const [data, setReceipe] = useState([]);

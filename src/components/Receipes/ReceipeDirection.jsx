@@ -24,7 +24,7 @@ function ReceipeDirection(props) {
 
   useEffect(() => {
     getReceipeDetail();
-  }, []);
+  }, [receipeId]);
 
   const getReceipeDetail = async () => {
     const { data: receipePost } = await getOneReceipePost(receipeId);

@@ -15,23 +15,37 @@ import React, { useState, useEffect } from "react";
 import { getOneReceipePost } from "../../utils/receipePost";
 import { FaCheckCircle } from "react-icons/fa";
 import { FiCircle } from "react-icons/fi";
-import FoodImg1 from "../../Images/food01.jpg";
-import FoodImg2 from "../../Images/food02.jpg";
 import FoodImg3 from "../../Images/food03.jpg";
+import { getPopularReceipes } from "../../utils/receipePost";
+import { Link } from "react-router-dom";
 
 function ReceipeIngrediants(props) {
   const [receipePost, setReceipePost] = useState([]);
-
+  const [popularReceipe, setPopularReceipe] = useState([]);
   const receipeId = props.receipeId;
+
+  const imgPath = "https://foodielandnod.herokuapp.com/";
 
   useEffect(() => {
     getReceipeDetail();
-  }, []);
+    popularReceipeDetails();
+  }, [receipeId]);
 
   const getReceipeDetail = async () => {
     const { data: receipePost } = await getOneReceipePost(receipeId);
     setReceipePost(receipePost.data.ingredient);
   };
+
+  const popularReceipeDetails = async () => {
+    const { data: popularReceipe } = await getPopularReceipes();
+    setPopularReceipe(popularReceipe);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+    });
+  }
 
   return (
     <Box maxW={1080} mx={"auto"}>
@@ -82,7 +96,7 @@ function ReceipeIngrediants(props) {
             </Stack>
             <Stack>
               <List spacing={8}>
-                {receipePost  ? (
+                {receipePost ? (
                   <>
                     <ListItem>
                       <ListIcon as={FiCircle} />
@@ -124,18 +138,28 @@ function ReceipeIngrediants(props) {
         <Box w={380}>
           <Heading fontSize={"4xl"}>Other Receipe</Heading>
           <Stack mt={5}>
-            <HStack>
-              <Img w={180} h={110} borderRadius={30} src={FoodImg3} />
-              <Stack>
-                <Heading fontSize={"lg"}>
-                  Chicken MeatBall With Creamy Cheese
-                </Heading>
-                <Heading fontSize={"sm"} color={"gray.400"}>
-                  By Andreas Paul
-                </Heading>
-              </Stack>
-            </HStack>
-            <HStack>
+            {popularReceipe.slice(1, 4).map((data) => {
+              return (
+                <Link to={`/receipeposts/${data._id}`} onClick={() => { scrollToTop() }}>
+                <HStack>
+                  <Box w={150}>
+                  <Img w={120} h={100} borderRadius={30} src={imgPath + data.recipeId.image} />
+                  </Box>
+                  <Box w={200}>
+                  <Stack>
+                    <Heading fontSize={"lg"}>
+                      {data.recipeId.title}
+                    </Heading>
+                    <Heading fontSize={"sm"} color={"gray.400"}>
+                      By Andreas Paul
+                    </Heading>
+                  </Stack>
+                  </Box>
+                </HStack>
+              </Link>
+              );
+            })}
+            {/* <HStack>
               <Img w={180} h={110} borderRadius={30} src={FoodImg2} />
               <Stack>
                 <Heading fontSize={"lg"}>
@@ -159,7 +183,7 @@ function ReceipeIngrediants(props) {
             </HStack>
             <HStack>
               <Img mt={20} w={"100%"} h={300} src={FoodImg3} />
-            </HStack>
+            </HStack> */}
           </Stack>
         </Box>
       </Flex>
