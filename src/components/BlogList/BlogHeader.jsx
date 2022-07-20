@@ -20,6 +20,12 @@ function BlogHeader() {
   const [searchQuery] = useState("");
   const [postsPerPage] = useState(5);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    blogsDetails();
+    popularBlogsDetails();
+  }, []);
+  
   const blogsDetails = async () => {
     const { data } = await getAllBlogs();
     setBlogs(data);
@@ -35,16 +41,12 @@ function BlogHeader() {
     setBlogs(searchQuery);
   };
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    blogsDetails();
-    popularBlogsDetails();
-  }, []);
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = data.slice(indexOfFirstPost, indexOfLastPost);
   const paginate = (pageNumber) => {
+    window.scrollTo(0, 0);
     setCurrentPage(pageNumber);
   };
 
@@ -74,15 +76,6 @@ function BlogHeader() {
               borderRadius={15}
               onChange={(event) => handleSearch(event.target.value)}
             />
-            <Button
-              borderRadius={15}
-              bgColor={"#000"}
-              color={"#fff"}
-              size={"lg"}
-              ml={2}
-            >
-              Search
-            </Button>
           </Box>
         </Center>
       </Box>

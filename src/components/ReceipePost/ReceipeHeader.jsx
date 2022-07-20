@@ -33,7 +33,6 @@ function ReceipeHeader() {
 
   const popularReceipeDetails = async () => {
     const { data: popularReceipe } = await getPopularReceipes();
-    console.log(popularReceipe);
     setPopularReceipe(popularReceipe);
   };
 

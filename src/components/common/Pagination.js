@@ -5,7 +5,7 @@ import {
   GridItem,
   HStack,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React from "react";
 
 const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
   const pageNumber = [];
@@ -16,9 +16,11 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
    pageNumber.push(i);
   }
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [])
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+    });
+};
   return (
     <Box>
       <Grid>
@@ -27,7 +29,7 @@ const Pagination = ({ postsPerPage, totalPosts, paginate, currentPage }) => {
               <GridItem>
                 <Button
                 size={"lg"}
-                  onClick={() => paginate(number)}
+                  onClick={() => { paginate(number); scrollToTop() }}
                   bgColor={number == currentPage ? "#000" : "gray.200"}
                   borderRadius={15}
                   color={number == currentPage ? "#fff" : "#000"}

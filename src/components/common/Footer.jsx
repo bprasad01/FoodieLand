@@ -19,14 +19,23 @@ function Footer(props) {
 
   const imgPath = "https://foodielandnod.herokuapp.com/";
 
+  useEffect( () => {
+    window.scrollTo(0, 0);
+    handleFooterData();
+  }, []);
+
   const handleFooterData = async () => {
     const { data } = await getFooterData();
     setData( data );
   }
 
-  useEffect( () => {
-    handleFooterData();
-  }, []);
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+    });
+  }
+
   return (
     <Box maxW={1080} mx={"auto"}>
       <Box mt={10}>
@@ -42,10 +51,10 @@ function Footer(props) {
           <Spacer />
           <Flex alignItems={"center"}>
             <Stack direction={"row"} spacing={7}>
-              <Link to="/receipelists">Receipe</Link>
-              <Link to="/bloglists">Blog</Link>
-              <Link to="/contacts">Contact</Link>
-              <Link to="/about">About Us</Link>
+              <Link to="/receipelists" onClick={() => { scrollToTop()}}>Receipe</Link>
+              <Link to="/bloglists" onClick={() => { scrollToTop()}}>Blog</Link>
+              <Link to="/contacts" onClick={() => { scrollToTop()}}>Contact</Link>
+              <Link to="/about" onClick={() => { scrollToTop()}}>About Us</Link>
             </Stack>
           </Flex>
         </Flex>

@@ -29,6 +29,7 @@ function BlogPosts(props) {
   const blogId = props.match.params.blogId;
 
   useEffect( () => {
+    window.scrollTo(0, 0);
     getBlogDetail();
   }, []);
 
