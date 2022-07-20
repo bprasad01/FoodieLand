@@ -12,12 +12,19 @@ function TopReceipe(props) {
     const [data, setData ] = useState([]);
     const imgPath = "https://foodielandnod.herokuapp.com/";
     useEffect( () => {
+      window.scrollTo(0, 0);
         getReceipeData();
     }, [])
     
     const getReceipeData = async () => {
         const { data } = await getAllReceipe();
         setData(data);
+    }
+
+    const scrollToTop = () => {
+      window.scrollTo({
+          top: 0,
+      });
     }
 
     return (
@@ -27,7 +34,7 @@ function TopReceipe(props) {
         </Box>
         <SimpleGrid columns={4} spacing={5} mt={10}>
           {data.slice(0,4).map((item, index) => (
-            <Link to={`/receipeposts/${item._id}`}>
+            <Link to={`/receipeposts/${item._id}`} onClick={() => { scrollToTop() }}>
             <Box key={index} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
                 objectFit="fill"
