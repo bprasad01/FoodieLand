@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
 import {
   Image,
   Box,
@@ -18,7 +19,6 @@ import { BsFillAlarmFill } from "react-icons/bs";
 import { ImSpoonKnife } from "react-icons/im";
 import { MdOutlineSlowMotionVideo, MdKitchen } from "react-icons/md";
 import { getPopularReceipes } from '../../utils/homeService';
-import defaultImg from '../../Images/chicken.jpg';
 import capsFirst from '../../utils/capsFirst';
 
 const Banner = () => {
@@ -87,10 +87,11 @@ const Banner = () => {
                       <Text fontSize={"sm"}>{moment(item.recipeId.categoryId.createdAt).format("MMM Do YY")}</Text>
                     </Box>
                   </WrapItem>
+                  <Link to={`/receipeposts/${item._id}`}>
                   <Button borderRadius="10px" bgColor="#000" colorScheme="#fff">
                     View Receipe
                     <MdOutlineSlowMotionVideo />
-                  </Button>
+                  </Button></Link>
                 </Wrap>
               </Box>
               <Box w={512}>

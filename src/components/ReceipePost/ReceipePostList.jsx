@@ -13,6 +13,8 @@ import food1 from "../../Images/food01.jpg";
 import poster from "../../Images/poster3.png";
 import moment from "moment";
 import { Link } from "react-router-dom";
+
+
 const ReceipePostList = ({ posts, popularReceipe, searchQuery }) => {
   const defaultImageUrl =
     "https://indiaeducationdiary.in/wp-content/uploads/2021/02/lovett-backdrop-crop-1-1024x576.jpg";
@@ -33,10 +35,11 @@ const ReceipePostList = ({ posts, popularReceipe, searchQuery }) => {
             }
           }).map((item) => {
             return (
-              <Flex mb={5} key={item._id}>
-                <Box w={250}>
+              <Flex mb={5}>
+                <Box w={250} key={item._id}>
                   <Link to={`/receipeposts/${item._id}`}>
                     <Img
+                    
                       src={
                         imgPath + item.recipeId.image
                       }

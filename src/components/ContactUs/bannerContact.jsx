@@ -120,7 +120,7 @@ class BannerContact extends Component {
                     label="Username"
                     placeholder="Enter Your Name"
                     onChange={this.handleChange}
-                    error={errors.username}
+                    error={errors.name}
                   />
                 </Box>
 

@@ -8,7 +8,8 @@ import AllReceipe from './AllReceipe';
 import Footer from '../common/Footer';
 import Subscription from '../common/Subscription';
 
-const HomeComponent = () => {
+const HomeComponent = (props) => {
+   
     return ( 
         <>
         <Banner />

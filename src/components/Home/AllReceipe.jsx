@@ -45,10 +45,11 @@ class AllReceipes extends Component {
           </Text>
         </Flex>
         <SimpleGrid columns={4} spacing={5}>
-          {popularReceipes.map((item, index) => (
+          {popularReceipes.map((item) => (
              <Link to={`/receipeposts/${item._id}`}>
-            <Box key={index} p={2} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
+            <Box p={2} borderRadius={20} as="article" mt={15} boxShadow='dark-lg' rounded='md' bg='white'>
               <Image
+              key={item._id}
                 objectFit="fill"
                 h={250}
                 w="100%"

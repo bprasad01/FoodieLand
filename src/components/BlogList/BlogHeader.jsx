@@ -38,7 +38,7 @@ function BlogHeader() {
 
   const handleSearch = async (query) => {
     const { data: searchQuery } = await getSearchQuery(query);
-    setBlogs(searchQuery);
+    setBlogs(searchQuery, {currentPage : 1} );
   };
 
 

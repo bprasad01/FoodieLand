@@ -1,9 +1,6 @@
-
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
-// import Blogs from './components/BlogPost/Blogs';
 import Nav from './components/common/NavBar';
-
 import HomeComponent from './components/Home/HomeComponent';
 import BlogLists from './components/BlogList/BlogLists';
 import Contacts from './components/ContactUs/Contacts';
