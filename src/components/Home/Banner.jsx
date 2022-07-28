@@ -12,6 +12,7 @@ import {
   Wrap,
   WrapItem,
   Avatar,
+  Img,
 } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -94,9 +95,11 @@ const Banner = () => {
                   </Button></Link>
                 </Wrap>
               </Box>
+              <Link to={`/receipeposts/${item._id}`}>
               <Box w={512}>
-                <Image src={imgPath + item.recipeId.image} height={460}  w={"100%"} />
+                <Img src={imgPath + item.recipeId.image} height={460}  w={"100%"} />
               </Box>
+                </Link>
             </Flex>
           </Box>
         );

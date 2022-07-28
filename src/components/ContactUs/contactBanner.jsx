@@ -9,29 +9,34 @@ import {
   FormControl,
   Heading,
   Img,
-  Input,
   Stack,
 } from "@chakra-ui/react";
 import chefImg from "../../Images/Cook-contact.png";
 import InputData from "../common/Input";
 import SelectBox from "../common/SelectBox";
 import TextArea from "../common/TextArea";
+import { setContact } from "../../utils/contactService";
+import { useEffect } from "react";
 
 function ContactBanner(props) {
-  const [contact, setContact] = useState({
-    username: "",
+  const [contact, setContacts] = useState({
+    name: "",
     email: "",
     subject: "",
-    enquiry: "",
+    enquiryType: "",
     message: "",
   });
 
+  // useEffect(()=> {
+  //   window.scrollTo(0, 0);
+  // }, [])
+
 
   schema = {
-    username: Joi.string().required(),
+    name: Joi.string().required(),
     email: Joi.string().required(),
     subject: Joi.string().required(),
-    enquiry: Joi.string().required(),
+    enquiryType: Joi.string().required(),
     message: Joi.string().required(),
   };
 
@@ -49,14 +54,24 @@ function ContactBanner(props) {
     return errors;
   };
 
+  const doSubmit = async () => {
+    const response = await setContact(contact);
+    setContacts({ contact: {
+      name: "",
+      email: "",
+      subject: "",
+      enquiryType: "",
+      message: "",
+    }})
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = validate();
-    console.log(errors);
     setErrors({ errors: errors || {} })
 
     if (errors) return;
-
+    doSubmit();
     console.log("Submitted");
   };
 
@@ -71,16 +86,16 @@ function ContactBanner(props) {
    const handleChange = ({ currentTarget: input }) => {
 
      const errorMsg = { ...errors };
-     console.log(errorMsg);
      const errorMessage = validateProperty(input);
      if (errorMessage) errorMsg[input.name] = errorMessage;
      else delete errorMsg[input.name];
  
     const contacts = {...contact};
      contacts[input.name] = input.value;
-     setContact( contacts, errorMsg )
+     setContacts( contacts, errorMsg )
      
    };
+
 
   return (
     <Container maxW={1080} mx={"auto"} mt={20}>
@@ -101,13 +116,12 @@ function ContactBanner(props) {
             <Stack direction={"row"}>
               <Box mr={5}>
                 <InputData
-                  name="username"
-                  value={contact.username}
-                  label="Username"
+                  name="name"
+                  value={contact.name}
+                  label="name"
                   placeholder="Enter Your Name"
                   onChange={handleChange}
-                  error={console.log(errors.username)}
-                  // error={errors.username}
+                  error={errors.errors && errors.errors.name}
                 />
               </Box>
 
@@ -118,7 +132,7 @@ function ContactBanner(props) {
                   label="Email"
                   placeholder="Enter Your Email"
                   onChange={handleChange}
-                  // error={errors.username}
+                  error={errors.errors && errors.errors.email}
                 />
               </Box>
             </Stack>
@@ -130,18 +144,18 @@ function ContactBanner(props) {
                   label="Subject"
                   placeholder="Enter Your Subject"
                   onChange={handleChange}
-                  // error={errors.username}
+                  error={errors.errors && errors.errors.subject}
                 />
               </Box>
 
               <Box>
                 <SelectBox
-                  name="enquiry"
-                  label="Enquiry Type"
+                  name="enquiryType"
+                  label="enquiryType Type"
                   placeholder="Advertisement"
-                  value={contact.enquiry}
+                  value={contact.enquiryType}
                   onChange={handleChange}
-                  // error={errors.username}
+                  error={errors.errors && errors.errors.enquiryType}
                 />
               </Box>
             </Stack>
@@ -153,7 +167,7 @@ function ContactBanner(props) {
                   placeholder="Enter tour message here...."
                   value={contact.message}
                   onChange={handleChange}
-                  // error={errors.username}
+                  error={errors.errors && errors.errors.message}
                 />
               </Box>
             </Stack>
