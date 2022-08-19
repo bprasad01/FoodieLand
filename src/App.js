@@ -9,6 +9,8 @@ import About from './components/AboutUs/About';
 import BlogPosts from './components/BlogPost/BlogPosts';
 import ReceipeList from './components/ReceipePost/ReceipeList';
 import Receipes from './components/Receipes/Receipes';
+import Login from './components/Login/Login';
+import LogOut from './components/Login/LogOut';
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
       <Route path="/contacts" component={Contacts} />
       <Route path="/about" component={About} />
       <Route path="/not-found" component={NotFound} />
+      <Route path="/login" component={Login}/>
+      <Route path="/logout" component={LogOut}/>
       <Redirect from='/' exact to='/home'/>
       <Redirect exact to='/not-found' />
     </Switch>

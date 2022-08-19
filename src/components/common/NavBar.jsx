@@ -15,6 +15,8 @@ import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 export default function Nav() {
+  const token = localStorage.getItem('login')
+  console.log(token);
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Box maxW={1080} mx={"auto"}>
@@ -28,10 +30,13 @@ export default function Nav() {
           <Flex justifyContent={"space-between"}>
             <HStack spacing={8}>
               <NavLink to="/home">Home</NavLink>
-              <NavLink to="/receipelists">Receipe</NavLink>
+              {token ? <><NavLink to="/receipelists">Receipe</NavLink>
               <NavLink to="/bloglists">Blog</NavLink>
               <NavLink to="/contacts">Contact</NavLink>
+              </> : ""}
               <NavLink to="/about">About Us</NavLink>
+              {!token ? <NavLink to="/login">Login</NavLink> : <NavLink to="/logout">LogOut</NavLink>}
+              
             </HStack>
           </Flex>
           <Flex alignItems={"center"}>
